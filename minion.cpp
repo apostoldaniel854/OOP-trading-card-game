@@ -1,10 +1,8 @@
 #include "card.h"
 #include "minion.h"
 
-Minion::Minion(int manaCost, int type, int health, int attack) : Card(manaCost, type) {
-    this->health = health;
-    this->attack = attack;
-}
+Minion::Minion(std::string name, int manaCost, int type, int health, int attack) : Card(name, manaCost, type), health(health), attack(attack) {}
+
 int Minion::getHealth() {
     return health;
 }

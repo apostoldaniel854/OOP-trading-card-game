@@ -1,7 +1,7 @@
 #include "spell.h"
 #include "card.h"
 
-Spell::Spell (int manaCost, int type, int damage) : Card(manaCost, type), damage(damage) {};
+Spell::Spell (std::string name, int manaCost, int type, int damage) : Card(name, manaCost, type), damage(damage) {};
 
 int Spell::getDamage() {
     return damage;

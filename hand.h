@@ -1,4 +1,5 @@
 #include "card.h"
+#include <iostream>
 #include <vector>
 
 class Hand {
@@ -6,5 +7,7 @@ class Hand {
 public:
     Hand(){};
     ~Hand(){};
-    void drawCard(Card card);
+    void drawCard(const Card& card);
+    friend std::ostream& operator << (std::ostream& out, Hand& hand);
+    std::vector <Card> getCardsInHand();
 };
