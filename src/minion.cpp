@@ -15,3 +15,7 @@ void Minion::setHealth(int health) {
 void Minion::setAttack(int attack) {
     this->attack = attack;
 }
+
+std::ostream& operator << (std::ostream& out, const Minion& minion) {
+
+}

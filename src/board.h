@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include "card.h"
@@ -11,5 +12,8 @@ private:
 public:
     Board(){};
     ~Board(){};
+    const std::vector <Minion>& getFriendlyMinions() const;
     void addMinionToBoard(Minion minion, bool friendly);
+    friend std::ostream& operator << (std::ostream& out, Board& board);
+
 };

@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 
 class Card {
@@ -8,12 +9,9 @@ private:
 public:
     Card(std::string name, int manaCost, int type);
     Card();
-    int getManaCost();
+    int getManaCost() const;
     int getType();
-    std::string getName();
-    void setManaCost(int manaCost);
-    void setType(int type);
-    void setName(std::string name);
+    std::string getName() const;
     friend std::ostream& operator << (std::ostream& out, Card& card);
 };
 

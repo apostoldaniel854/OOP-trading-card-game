@@ -80,8 +80,8 @@ endfunction()
 ###############################################################################
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
-add_executable(${PROJECT_NAME} controller.cpp hand.cpp hand.h card.cpp card.h deck.cpp deck.h board.cpp board.h player.cpp player.h spell.cpp spell.h)
-
+add_executable(${PROJECT_NAME} controller.cpp src/game.cpp src/hand.cpp src/card.cpp src/deck.cpp src/board.cpp src/player.cpp src/spell.cpp)
+#add_subdirectory(src)
 ###############################################################################
 
 # target definitions
