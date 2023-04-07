@@ -1,7 +1,5 @@
 #include "deck.h"
-#include "hand.h"
 #include "card.h"
-#include <vector>
 
 
 Deck::Deck(int numCards) {

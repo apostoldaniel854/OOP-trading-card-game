@@ -1,3 +1,5 @@
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+
 cmake_minimum_required(VERSION 3.24)
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing executable name in this file

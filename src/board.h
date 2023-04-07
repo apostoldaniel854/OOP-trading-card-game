@@ -10,10 +10,11 @@ private:
     std::vector <Minion> friendlyMinions;
     std::vector <Minion> enemyMinions;
 public:
-    Board(){};
-    ~Board(){};
+    // Board();
     const std::vector <Minion>& getFriendlyMinions() const;
+    const std::vector<Minion> &getEnemyMinions() const;
     void addMinionToBoard(Minion minion, bool friendly);
-    friend std::ostream& operator << (std::ostream& out, Board& board);
+    friend std::ostream& operator << (std::ostream& out, const Board& board);
+
 
 };

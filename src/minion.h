@@ -8,7 +8,7 @@ private:
     int attack;
 public:
     Minion(std::string name, int manaCost, int type, int health, int attack);
-    Minion(const Minion& other);
+    // Minion(const Minion& other);
     ~Minion(){};
     int getHealth();
     int getAttack();

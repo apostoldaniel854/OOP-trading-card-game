@@ -8,9 +8,9 @@
 
 class Game {
 private:
+    Board board;
     Player player1;
     Player player2;
-    Board board;
     void showState();
 public:
     Game();
