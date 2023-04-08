@@ -12,3 +12,11 @@ Card Deck::drawCard() {
     cards.pop_back();
     return card;
 }
+
+
+std::ostream& operator << (std::ostream &out, const Deck &deck) {
+    out << "---------------- DECK -----------------\n";
+    for (const Card& card : deck.cards)
+        out << card;
+    return out;
+}

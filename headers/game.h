@@ -1,4 +1,6 @@
 #pragma once
+
+#include <ostream>
 #include "card.h"
 #include "board.h"
 #include "deck.h"
@@ -13,5 +15,8 @@ private:
     void showState(int turn);
 public:
     Game();
+
+    friend std::ostream& operator << (std::ostream& out, const Game& game);
+
     void run();
 };

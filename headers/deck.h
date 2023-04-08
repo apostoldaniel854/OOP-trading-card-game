@@ -8,4 +8,5 @@ private:
 public:
     explicit Deck(int numCards);
     Card drawCard();
+    friend std::ostream& operator << (std::ostream& out, const Deck &deck);
 };
