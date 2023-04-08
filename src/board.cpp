@@ -4,7 +4,7 @@ const std::vector <Minion>& Board::getFriendlyMinions() const{
      return friendlyMinions;
 }
 
-const std::vector<Minion> &Board::getEnemyMinions() const {
+const std::vector<Minion>& Board::getEnemyMinions() const {
     return enemyMinions;
 }
 
@@ -17,9 +17,11 @@ void Board::addMinionToBoard(Minion minion, bool friendly) {
 }
 
  std::ostream& operator << (std::ostream& out, const Board& board) {
-    //for (const Minion& minion : board.getFriendlyMinions())
-     //   out << minion << "\n";
-   // for (const Minion& minion : board.getEnemyMinions())
-   //     out << minion << "\n";
+    out << "Player 1 minions:\n";
+    for (const Minion& minion : board.getFriendlyMinions())
+        out << minion;
+    out << "Player 2 minions:\n";
+    for (const Minion& minion : board.getEnemyMinions())
+         out << minion;
    return out;
 }

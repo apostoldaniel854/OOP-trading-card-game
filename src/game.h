@@ -11,7 +11,7 @@ private:
     Board board;
     Player player1;
     Player player2;
-    void showState();
+    void showState(int turn);
 public:
     Game();
     void run();

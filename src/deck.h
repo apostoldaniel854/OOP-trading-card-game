@@ -6,6 +6,6 @@ class Deck {
 private:
     std::vector <Card> cards;
 public:
-    Deck(int numCards);
+    explicit Deck(int numCards);
     Card drawCard();
 };

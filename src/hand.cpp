@@ -6,15 +6,13 @@ void Hand::drawCard(const Card& card) {
     cards.push_back(card);
 }
 
-std::vector <Card> Hand::getCardsInHand() const {
+const std::vector <Card>& Hand::getCardsInHand() const {
     return cards;
 }
 
 std::ostream& operator << (std::ostream& out, const Hand& hand) {
     out << "Cards in hand:\n";
-    for (const Card& card : hand.getCardsInHand()) {
-        out << "-> ";
-      //  out << card << "\n";
-    }
+    for (const Card& card : hand.getCardsInHand())
+        out << card;
     return out;
 }

@@ -7,9 +7,9 @@ class Hand {
 private:
     std::vector<Card> cards;
 public:
-    Hand(){};
-    ~Hand(){};
+    Hand()= default;
+    ~Hand()= default;
     void drawCard(const Card& card);
     friend std::ostream& operator << (std::ostream& out, const Hand& hand);
-    std::vector <Card> getCardsInHand() const;
+    [[nodiscard]] const std::vector <Card>& getCardsInHand() const;
 };
