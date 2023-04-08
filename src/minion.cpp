@@ -1,5 +1,4 @@
-#include "card.h"
-#include "minion.h"
+#include "../headers/minion.h"
 
 Minion::Minion(const std::string &name, int manaCost, int health, int attack) : Card(name, manaCost), health(health), attack(attack) {}
 

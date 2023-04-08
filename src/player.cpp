@@ -1,9 +1,6 @@
-#include "player.h"
+#include "../headers/player.h"
 
 #include <utility>
-#include "deck.h"
-#include "hand.h"
-#include "card.h"
 
 
 Player::Player(std::string  name, int health, Deck deck) : name(std::move(name)), health(health), hand(Hand()), deck(deck) {

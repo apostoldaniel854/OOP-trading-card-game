@@ -1,5 +1,4 @@
-#include "deck.h"
-#include "card.h"
+#include "../headers/deck.h"
 
 
 Deck::Deck(int numCards) {

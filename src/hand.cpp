@@ -1,5 +1,4 @@
-#include "hand.h"
-#include "card.h"
+#include "../headers/hand.h"
 #include <iostream>
 
 void Hand::drawCard(const Card& card) {

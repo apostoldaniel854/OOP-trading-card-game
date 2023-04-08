@@ -1,5 +1,4 @@
-#include "spell.h"
-#include "card.h"
+#include "../headers/spell.h"
 
 Spell::Spell (std::string name, int manaCost, int type, int damage) : Card(name, manaCost, type), damage(damage) {};
 

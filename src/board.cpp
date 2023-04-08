@@ -1,4 +1,4 @@
-#include "board.h"
+#include "../headers/board.h"
 
 const std::vector <Minion>& Board::getFriendlyMinions() const{
      return friendlyMinions;
