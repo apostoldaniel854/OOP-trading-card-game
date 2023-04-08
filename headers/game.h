@@ -6,6 +6,7 @@
 #include "deck.h"
 #include "minion.h"
 #include "player.h"
+#include "utils.h"
 
 class Game {
 private:

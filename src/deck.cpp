@@ -8,9 +8,12 @@ Deck::Deck(int numCards) {
 }
 
 Card Deck::drawCard() {
-    Card card = cards.back();
-    cards.pop_back();
-    return card;
+    if ((int)cards.size() > 0) {
+        Card card = cards.back();
+        cards.pop_back();
+        return card;
+    }
+    return {FATIGUE_CARD_NAME, SPECIAL_CARD, 0};
 }
 
 

@@ -2,7 +2,7 @@
 #include <chrono>
 #include <thread>
 
-Game::Game() : board(), player1("Player1", 30, Deck(30)), player2("Player2", 30, Deck(30)) {}
+Game::Game() : board(), player1("Player1", IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE)), player2("Player2", IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE)) {}
 
 void Game::showState(int turn) {
     std::cout << "----------------" << "Turn " << turn << "---------------\n";
@@ -12,11 +12,22 @@ void Game::showState(int turn) {
 }
 
 void Game::run() {
-    std::cout << Deck(30) << "\n"; /// test required for hw 1
+    std::cout << Deck(MAX_DECK_SIZE) << "\n"; /// test required for hw 1
     int turn = 1;
     while (turn <= 20) {
         std::this_thread::sleep_for(std::chrono::seconds(1));
         showState(turn);
+
+        Card playedCard1 = player1.playRandomCard();
+        if (playedCard1.getName() != EMPTY_CARD_NAME)
+            board.addMinionToBoard(Minion(playedCard1), player1.getFriendly());
+        player1.endTurn(turn);
+
+
+        Card playedCard2 = player2.playRandomCard();
+        if (playedCard2.getName() != EMPTY_CARD_NAME)
+            board.addMinionToBoard(Minion(playedCard2), player2.getFriendly());
+        player2.endTurn(turn);
         turn++;
     }
 }

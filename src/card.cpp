@@ -2,14 +2,14 @@
 #include <iostream>
 #include <utility>
 
-Card::Card(std::string  name, int manaCost) : name(std::move(name)), manaCost(manaCost){}
-Card::Card() : name("placeholder"), manaCost(0){}
+Card::Card(std::string  name, int type, int manaCost) : name(std::move(name)), manaCost(manaCost), type(type){}
+Card::Card() : name("placeholder"), manaCost(0), type(MINION_CARD){}
 
 int Card::getManaCost() const {
     return manaCost;
 }
 
-//[[maybe_unused]] int Card::getType() const {
+//int Card::getType() const {
 //    return type;
 //}
 
