@@ -1,5 +1,3 @@
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
-
 cmake_minimum_required(VERSION 3.24)
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing executable name in this file
@@ -82,7 +80,7 @@ endfunction()
 ###############################################################################
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
-add_executable(${PROJECT_NAME} controller.cpp src/game.cpp src/hand.cpp src/card.cpp src/deck.cpp src/board.cpp src/player.cpp src/spell.cpp src/minion.cpp)
+add_executable(${PROJECT_NAME} controller.cpp src/game.cpp src/hand.cpp src/card.cpp src/deck.cpp src/board.cpp src/player.cpp src/minion.cpp)
 #add_subdirectory(src)
 ###############################################################################
 

@@ -19,7 +19,4 @@ std::ostream &operator<<(std::ostream &out, const Player &player) {
     return out;
 }
 
-[[maybe_unused]] int Player::getHealth() const {
-    return health;
-}
 

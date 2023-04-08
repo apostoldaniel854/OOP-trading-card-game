@@ -12,9 +12,6 @@ private:
     Deck deck;
 public:
     Player(std::string  name, int health, Deck deck);
-
-    [[maybe_unused]] [[nodiscard]] int getHealth() const;
-
     friend std::ostream &operator<<(std::ostream &out, const Player &player);
 
 };

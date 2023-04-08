@@ -4,7 +4,6 @@
 #include "deck.h"
 #include "minion.h"
 #include "player.h"
-#include "spell.h"
 
 class Game {
 private:
