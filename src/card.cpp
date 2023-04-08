@@ -9,9 +9,9 @@ int Card::getManaCost() const {
     return manaCost;
 }
 
-[[maybe_unused]] int Card::getType() const {
-    return type;
-}
+//[[maybe_unused]] int Card::getType() const {
+//    return type;
+//}
 
 const std::string& Card::getName() const {
     return name;
