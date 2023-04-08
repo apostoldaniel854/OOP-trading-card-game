@@ -8,7 +8,7 @@ private:
     int health;
     int attack;
 public:
-    Minion(const std::string& name, int manaCost, int type, int health, int attack);
+    Minion(const std::string& name, int manaCost, int health, int attack);
     // Minion(const Minion& other);
     friend std::ostream& operator << (std::ostream& out, const Minion& minion);
 };

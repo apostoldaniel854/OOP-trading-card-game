@@ -2,8 +2,8 @@
 #include <iostream>
 #include <utility>
 
-Card::Card(std::string  name, int manaCost, int type) : name(std::move(name)), manaCost(manaCost), type(type){}
-Card::Card() : name("placeholder"), manaCost(0), type(0){}
+Card::Card(std::string  name, int manaCost) : name(std::move(name)), manaCost(manaCost){}
+Card::Card() : name("placeholder"), manaCost(0){}
 
 int Card::getManaCost() const {
     return manaCost;

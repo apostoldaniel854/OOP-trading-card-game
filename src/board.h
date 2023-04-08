@@ -11,8 +11,8 @@ private:
     std::vector <Minion> enemyMinions;
 public:
     // Board();
-    const std::vector <Minion>& getFriendlyMinions() const;
-    const std::vector<Minion> &getEnemyMinions() const;
+    [[nodiscard]] const std::vector <Minion>& getFriendlyMinions() const;
+    [[nodiscard]] const std::vector<Minion> &getEnemyMinions() const;
 //    void addMinionToBoard(Minion minion, bool friendly);
     friend std::ostream& operator << (std::ostream& out, const Board& board);
 

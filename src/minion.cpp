@@ -1,7 +1,7 @@
 #include "card.h"
 #include "minion.h"
 
-Minion::Minion(const std::string &name, int manaCost, int type, int health, int attack) : Card(name, manaCost, type), health(health), attack(attack) {}
+Minion::Minion(const std::string &name, int manaCost, int health, int attack) : Card(name, manaCost), health(health), attack(attack) {}
 
 
 
