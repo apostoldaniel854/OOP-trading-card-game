@@ -2,16 +2,16 @@
 #include <iostream>
 #include <utility>
 
-Card::Card(std::string  name, int type, int manaCost) : name(std::move(name)), manaCost(manaCost), type(type){}
+Card::Card(std::string  name, int manaCost, int type) : name(std::move(name)), manaCost(manaCost), type(type){}
 Card::Card() : name("placeholder"), manaCost(0), type(MINION_CARD){}
 
 int Card::getManaCost() const {
     return manaCost;
 }
 
-//int Card::getType() const {
-//    return type;
-//}
+int Card::getType() const {
+    return type;
+}
 
 const std::string& Card::getName() const {
     return name;

@@ -16,10 +16,10 @@ std::ostream &operator<<(std::ostream &out, const Player &player) {
 }
 
 void Player::endTurn(int turn) {
-    static int fatigueDamage = 0;
+    static auto fatigueDamage = 0;
     mana = std::max(MAX_MANA, turn);
     Card drawnCard = deck.drawCard();
-    if (drawnCard.getName() == FATIGUE_CARD_NAME) {
+    if (drawnCard.getType() == SPECIAL_CARD) {
         fatigueDamage++;
         this->health -= fatigueDamage;
         return;
