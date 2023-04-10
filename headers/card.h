@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 #include "utils.h"
 
 class Card {
@@ -14,5 +15,12 @@ public:
     [[nodiscard]] int getType() const;
     [[nodiscard]] const std::string& getName() const;
     friend std::ostream& operator << (std::ostream& out, const Card& card);
+};
+
+
+static const std::vector <Card> cardsCatalog = {
+        Card("Dragon", 5, MINION_CARD),
+        Card("Orc", 2, MINION_CARD),
+        Card("Imp", 0, MINION_CARD)
 };
 

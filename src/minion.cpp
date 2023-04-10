@@ -1,11 +1,8 @@
+#include <utility>
+
 #include "../headers/minion.h"
 
-
-std::map <std::string, Minion> minionsCatalog = {
-        {"placeholder" , Minion("placeholder", 0, 1, 1) }
-};
-
-Minion::Minion(const std::string &name, int manaCost, int health, int attack) : Card(name, MINION_CARD, manaCost), health(health), attack(attack) {}
+Minion::Minion(std::string name, int health, int attack) : name(std::move(name)), health(health), attack(attack) {}
 
 
 
@@ -19,5 +16,5 @@ std::ostream& operator << (std::ostream& out, const Minion& minion) {
     return out;
 }
 
-Minion::Minion(const Card &card)  : Minion(minionsCatalog.find(card.getName())->second) {}
+Minion::Minion(const std::string& name)  : Minion(minionsCatalog.find(name)->second) {}
 

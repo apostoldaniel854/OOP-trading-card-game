@@ -44,7 +44,7 @@ Card Hand::playRandomCard(int &mana) {
     int randomCardIndex = getRandomInteger(0, (int)cards.size() - 1);
     Card playedCard = cards[randomCardIndex];
     if (playedCard.getManaCost() <= mana) {
-        std::cout << "You played " << cards[randomCardIndex].getName() << "\n";
+        std::cout << "PLAYED " << cards[randomCardIndex].getName() << "\n";
         mana -= playedCard.getManaCost();
         cards.erase(cards.begin() + randomCardIndex);
         return playedCard;

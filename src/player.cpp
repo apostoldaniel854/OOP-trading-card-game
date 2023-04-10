@@ -28,6 +28,7 @@ void Player::endTurn(int turn) {
 }
 
 Card Player::playRandomCard() {
+    std::cout << this->name << ":\n";
     return this->hand.playRandomCard(this->mana);
 }
 

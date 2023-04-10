@@ -3,7 +3,7 @@
 
 Deck::Deck(int numCards) {
     for (int i = 0; i < numCards; i++) {
-        cards.emplace_back();
+        cards.emplace_back(cardsCatalog[getRandomInteger(0, (int)cardsCatalog.size() - 1)]);
     }
 }
 

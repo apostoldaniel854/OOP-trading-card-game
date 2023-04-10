@@ -20,13 +20,13 @@ void Game::run() {
 
         Card playedCard1 = player1.playRandomCard();
         if (playedCard1.getName() != EMPTY_CARD_NAME)
-            board.addMinionToBoard(Minion(playedCard1), player1.getFriendly());
+            board.addMinionToBoard(Minion(playedCard1.getName()), player1.getFriendly());
         player1.endTurn(turn);
 
 
         Card playedCard2 = player2.playRandomCard();
         if (playedCard2.getName() != EMPTY_CARD_NAME)
-            board.addMinionToBoard(Minion(playedCard2), player2.getFriendly());
+            board.addMinionToBoard(Minion(playedCard2.getName()), player2.getFriendly());
         player2.endTurn(turn);
         turn++;
     }
