@@ -10,7 +10,7 @@
 #### Cerințe
 - [X] definirea a minim 3-4 clase folosind compunere
 - [X] constructori de inițializare
-- [ ] pentru o clasă: constructor de copiere, `operator=` de copiere, destructor
+- [X] pentru o clasă: constructor de copiere, `operator=` de copiere, destructor
 <!-- - [ ] pentru o altă clasă: constructor de mutare, `operator=` de mutare, destructor -->
 <!-- - [ ] pentru o altă clasă: toate cele 5 funcții membru speciale -->
 - [X] `operator<<` pentru toate clasele pentru afișare (std::ostream)
@@ -37,9 +37,9 @@
 - [ ] excepții
   - [ ] ierarhie proprie cu baza `std::exception` sau derivată din `std::exception`; minim 2 clase pentru erori specifice
   - [ ] utilizare cu sens: de exemplu, `throw` în constructor, `try`/`catch` în `main`
-- [ ] funcții și atribute `static`
-- [ ] STL
-- [ ] cât mai multe `const`
+- [X] funcții și atribute `static`
+- [X] STL
+- [X] cât mai multe `const`
 - [ ] la sfârșit: commit separat cu adăugarea unei noi derivate fără a modifica restul codului
 - [ ] tag de `git`: de exemplu `v0.2`
 

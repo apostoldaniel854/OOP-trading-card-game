@@ -20,4 +20,16 @@ public:
     friend std::ostream& operator << (std::ostream& out, const Game& game);
 
     void run();
+
+    void playEnemyTurn(int turn);
+
+    void playFriendlyTurn(int turn);
+
+    bool isGameOver();
+
+    static void showDraw();
+
+    static void showLose();
+
+    static void showWin();
 };

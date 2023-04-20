@@ -5,7 +5,7 @@ void Hand::drawCard(const Card& card) {
     if (cards.size() < MAX_HAND_SIZE)
         cards.push_back(card);
     else
-        std::cout << "YOUR TOP CARD HAS BEEN BURNED\n";
+        std::cout << "WARNING: YOUR TOP CARD HAS BEEN BURNED\n";
 }
 
 const std::vector <Card>& Hand::getCardsInHand() const {

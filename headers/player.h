@@ -17,9 +17,12 @@ public:
     Player(std::string  name, bool friendly, int health, Deck deck);
     friend std::ostream &operator<<(std::ostream &out, const Player &player);
 
-    void endTurn(int i);
+    void endTurn();
 
     Card playRandomCard();
 
     [[nodiscard]] bool getFriendly() const;
+    [[nodiscard]] int getHealth() const;
+    void startTurn(int i);
+
 };

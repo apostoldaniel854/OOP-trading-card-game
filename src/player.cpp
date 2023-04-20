@@ -3,8 +3,8 @@
 #include <utility>
 
 
-Player::Player(std::string  name, bool friendly, int health, Deck deck) : name(std::move(name)), friendly(friendly), mana(0), health(health), hand(Hand()), deck(deck) {
-    for (int i = 0; i < 3; i++) 
+Player::Player(std::string  name, bool friendly, int health, Deck deck) : name(std::move(name)), friendly(friendly), mana(DEFAULT_MANA), health(health), hand(Hand()), deck(deck) {
+    for (int i = 0; i < START_HAND_SIZE; i++)
         hand.drawCard(deck.drawCard());
 }
 
@@ -15,9 +15,8 @@ std::ostream &operator<<(std::ostream &out, const Player &player) {
     return out;
 }
 
-void Player::endTurn(int turn) {
+void Player::endTurn() {
     static auto fatigueDamage = 0;
-    mana = std::max(MAX_MANA, turn);
     Card drawnCard = deck.drawCard();
     if (drawnCard.getType() == SPECIAL_CARD) {
         fatigueDamage++;
@@ -34,6 +33,14 @@ Card Player::playRandomCard() {
 
 bool Player::getFriendly() const {
     return friendly;
+}
+
+void Player::startTurn(int turn) {
+    mana = std::max(MAX_MANA, turn);
+}
+
+int Player::getHealth() const {
+    return this->health;
 }
 
 

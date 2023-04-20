@@ -18,6 +18,10 @@ Jucatorul al carui viata devine negativa sau egala cu 0, pierde.
 Entrypoint-ul este fisierul controller.cpp.
 Jocul este text-based in terminal (versiuni urmatoare vor folosi [Indicators](https://github.com/p-ranav/indicators) pentru a infrumuseta interfata).
 
+## Documentatie
+
+
+
 ## Inspiratie
 - https://github.com/An0n1mity/Hearthstone-Battleground-Clone
 - https://github.com/Rymedy/hearthstone-web
