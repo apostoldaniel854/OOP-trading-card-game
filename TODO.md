@@ -16,10 +16,10 @@
 - [X] `operator<<` pentru toate clasele pentru afișare (std::ostream)
 - [X] cât mai multe `const` (unde este cazul)
 - [X] implementarea a minim 3 funcții membru publice pentru funcționalități specifice temei alese
-- [ ] scenariu de utilizare a claselor definite:
+- [X] scenariu de utilizare a claselor definite:
   - crearea de obiecte și apelarea funcțiilor membru publice în main
   - vor fi adăugate în fișierul `tastatura.txt` exemple de date de intrare de la tastatură (dacă există)
-- [ ] tag de `git`: de exemplu `v0.1`
+- [X] tag de `git`: de exemplu `v0.1`
 - [X] serviciu de integrare continuă (CI); exemplu: GitHub Actions
 
 ## Tema 2

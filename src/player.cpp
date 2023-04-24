@@ -9,7 +9,9 @@ Player::Player(std::string  name, bool friendly, int health, Deck deck) : name(s
 }
 
 std::ostream &operator<<(std::ostream &out, const Player &player) {
-    out << "-----------------" <<  player.name << "-------------------------\n";
+    out << "-------------" <<  player.name << "----------------\n";
+
+    delay(1);
     out << "Health: " << player.health << "\n";
     out << player.hand << "\n";
     return out;

@@ -14,6 +14,7 @@ const std::vector <Card>& Hand::getCardsInHand() const {
 
 std::ostream& operator << (std::ostream& out, const Hand& hand) {
     out << "-----------CARDS IN HAND------------\n";
+    delay(1);
     for (const Card& card : hand.getCardsInHand())
         out << card;
     return out;
@@ -45,6 +46,7 @@ Card Hand::playRandomCard(int &mana) {
     Card playedCard = cards[randomCardIndex];
     if (playedCard.getManaCost() <= mana) {
         std::cout << "PLAYED " << cards[randomCardIndex].getName() << "\n";
+        delay(1);
         mana -= playedCard.getManaCost();
         cards.erase(cards.begin() + randomCardIndex);
         return playedCard;

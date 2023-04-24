@@ -3,9 +3,12 @@
 Game::Game() : board(), player1("Player1", IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE)), player2("Player2", IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE)) {}
 
 void Game::showState(int turn) {
-    std::cout << "----------------" << "Turn " << turn << "---------------\n";
+    std::cout << "-------------" << "TURN " << turn << "-----------------\n";
+    delay(1);
     std::cout << board << "\n";
+    delay(1);
     std::cout << player1 << "\n";
+    delay(1);
     std::cout << player2 << "\n";
 }
 
@@ -27,12 +30,13 @@ void Game::run() {
             return;
         turn++;
     }
-    std::cout << "TURN LIMIT EXCEEDED\n";
+    std::cout << "---------TURN LIMIT EXCEEDED---------\n";
     showDraw();
 }
 
 std::ostream& operator << (std::ostream& out, const Game& game) {
-    out << "----------------------NEW GAME-------------------\n";
+    out << "-------------NEW GAME---------------\n";
+    delay(1);
     out << game.board << "\n";
     out << game.player1 << "\n";
     out << game.player2 << "\n";
@@ -74,13 +78,14 @@ bool Game::isGameOver() {
 }
 
 void Game::showDraw() {
-    std::cout << "GAME ENDED IN A DRAW\n";
+    std::cout << "---------GAME ENDED IN A DRAW--------\n";
+
 }
 
 void Game::showLose() {
-    std::cout << "YOU WERE KILLED - YOU LOSE\n";
+    std::cout << "-----YOU WERE KILLED - YOU LOSE------\n";
 }
 
 void Game::showWin() {
-    std::cout << "YOU KILLED THE ENEMY HERO - YOU WIN\n";
+    std::cout << "-YOU KILLED THE ENEMY HERO - YOU WIN-\n";
 }

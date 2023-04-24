@@ -17,13 +17,19 @@ void Board::addMinionToBoard(const Minion& minion, bool friendly) {
 }
 
  std::ostream& operator << (std::ostream& out, const Board& board) {
-    out << "-------- PLAYER 1 MINIONS------------\n";
+    out << "-------- PLAYER 1 MINIONS-----------\n";
+    delay(1);
+    if (board.getFriendlyMinions().empty())
+        out << "NONE\n";
     for (const Minion& minion : board.getFriendlyMinions())
         out << minion;
 
     out << "\n";
 
-    out << "-------- PLAYER 2 MINIONS------------\n";
+    out << "-------- PLAYER 2 MINIONS-----------\n";
+    delay(1);
+    if (board.getEnemyMinions().empty())
+         out << "NONE\n";
     for (const Minion& minion : board.getEnemyMinions())
          out << minion;
    return out;
