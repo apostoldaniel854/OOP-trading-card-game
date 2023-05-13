@@ -4,11 +4,7 @@
 #include "../headers/minion.h"
 
 Minion::Minion(std::string name, int health, int attack) : name(std::move(name)), health(health), attack(attack) {}
-Minion::Minion() {
-    name = "WISP";
-    health = 1;
-    attack = 1;
-}
+Minion::Minion() : name("Wisp"), health(1), attack(1) {}
 
 /// getter for attack
 int Minion::getAttack() const {
