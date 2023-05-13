@@ -22,4 +22,4 @@ static const int SPECIAL_CARD = 0;
 static const int MINION_CARD = 1;
 
 int getRandomInteger(int leftBound, int rightBound);
-void delay(int seconds);
+void delay(double seconds);

@@ -2,6 +2,7 @@
 #include "card.h"
 #include "utils.h"
 #include <iostream>
+#include <algorithm>
 #include <vector>
 
 class Hand {
@@ -17,4 +18,5 @@ public:
     Hand& operator = (const Hand& hand);
 
     Card playRandomCard(int &mana);
+    bool playCard(const std::string &cardName, int &mana);
 };

@@ -32,4 +32,6 @@ public:
     static void showLose();
 
     static void showWin();
+
+    static void showCommands();
 };

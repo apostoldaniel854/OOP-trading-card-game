@@ -23,6 +23,10 @@ public:
 
     [[nodiscard]] bool getFriendly() const;
     [[nodiscard]] int getHealth() const;
-    void startTurn(int i);
+    void startTurn(int turn);
+    void takeDamage(int damage);
 
+    Hand & getHand();
+
+    int &getMana();
 };

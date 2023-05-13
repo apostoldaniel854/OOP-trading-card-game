@@ -20,8 +20,17 @@ Jocul este text-based in terminal (versiuni urmatoare vor folosi [Indicators](ht
 
 ## Documentatie
 
-
-
+### Lista de comenzi
+- `help` - afiseaza lista de comenzi
+- `quit` - iesi din joc
+- `end_turn` - termina tura
+- `show_board` - afiseaza tabla
+- `show_hand` - afiseaza mana ta
+- `show_opponent` - afiseaza viata adversarului
+- `show_player` - afiseaza viata ta
+- `play <card_name>` - joaca o carte din mana
+- `attack <friendlyMinion_id> <enemyMinion_id>` - ataca cu un minion de pe tabla
+- `go_face <friendlyMinion_id> opponent` - ataca adversarul cu un minion de pe tabla
 ## Inspiratie
 - https://github.com/An0n1mity/Hearthstone-Battleground-Clone
 - https://github.com/Rymedy/hearthstone-web

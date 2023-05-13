@@ -19,7 +19,7 @@ Card Deck::drawCard() {
 
 std::ostream& operator << (std::ostream &out, const Deck &deck) {
     out << "---------------- DECK ---------------\n";
-    delay(1);
+    delay(0.2);
     for (const Card& card : deck.cards)
         out << card;
     return out;

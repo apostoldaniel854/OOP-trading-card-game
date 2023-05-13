@@ -11,6 +11,6 @@ int getRandomInteger(int leftBound, int rightBound) {
     return dis(gen);
 }
 
-void delay(int seconds) {
-    std::this_thread::sleep_for(std::chrono::seconds(seconds));
+void delay(double seconds) {
+    std::this_thread::sleep_for(std::chrono::milliseconds((int)seconds * 1000));
 }

@@ -7,15 +7,24 @@
 
 
 
-class Minion : public Card {
+class Minion {
 private:
     std::string name;
     int health;
     int attack;
 public:
+    Minion();
     Minion(std::string  name, int health, int attack);
     explicit Minion(const std::string& name);
     friend std::ostream& operator << (std::ostream& out, const Minion& minion);
+
+    void attackMinion(Minion &minion);
+
+
+    [[nodiscard]] bool isDead() const;
+
+    [[nodiscard]] int getAttack() const;
+    [[nodiscard]] const std::string& getName() const;
 };
 
 

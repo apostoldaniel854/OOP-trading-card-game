@@ -14,7 +14,7 @@ const std::vector <Card>& Hand::getCardsInHand() const {
 
 std::ostream& operator << (std::ostream& out, const Hand& hand) {
     out << "-----------CARDS IN HAND------------\n";
-    delay(1);
+    delay(0.2);
     for (const Card& card : hand.getCardsInHand())
         out << card;
     return out;
@@ -52,4 +52,22 @@ Card Hand::playRandomCard(int &mana) {
         return playedCard;
     }
     return {EMPTY_CARD_NAME, 0, MINION_CARD};
+}
+
+
+bool Hand::playCard(const std::string& cardName, int& mana) {
+    /// check if card is in hand
+    for (auto it = cards.begin(); it != cards.end(); it++) {
+        if (it->getName() == cardName) {
+            if (it->getManaCost() <= mana) { /// we have enough mana to play it
+                std::cout << "PLAYED " << it->getName() << "\n";
+                /// remove card from hand
+                cards.erase(it);
+                mana -= it->getManaCost();
+                return true;
+            }
+            return false;
+        }
+    }
+    return false;
 }

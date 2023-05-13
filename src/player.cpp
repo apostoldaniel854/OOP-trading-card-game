@@ -2,7 +2,6 @@
 
 #include <utility>
 
-
 Player::Player(std::string  name, bool friendly, int health, Deck deck) : name(std::move(name)), friendly(friendly), mana(DEFAULT_MANA), health(health), hand(Hand()), deck(deck) {
     for (int i = 0; i < START_HAND_SIZE; i++)
         hand.drawCard(deck.drawCard());
@@ -11,7 +10,7 @@ Player::Player(std::string  name, bool friendly, int health, Deck deck) : name(s
 std::ostream &operator<<(std::ostream &out, const Player &player) {
     out << "-------------" <<  player.name << "----------------\n";
 
-    delay(1);
+    delay(0.5);
     out << "Health: " << player.health << "\n";
     out << player.hand << "\n";
     return out;
@@ -38,11 +37,22 @@ bool Player::getFriendly() const {
 }
 
 void Player::startTurn(int turn) {
-    mana = std::max(MAX_MANA, turn);
+    mana = std::min(MAX_MANA, turn);
 }
 
 int Player::getHealth() const {
     return this->health;
+}
+
+void Player::takeDamage(int damage) {
+    this->health -= damage;
+}
+Hand & Player::getHand() {
+    return this->hand;
+}
+
+int &Player::getMana() {
+    return this->mana;
 }
 
 
