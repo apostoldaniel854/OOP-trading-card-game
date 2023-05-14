@@ -59,7 +59,7 @@ std::shared_ptr<Card> Hand::playRandomCard(int &mana) {
 bool Hand::playCard(const std::string& cardName, int& mana) {
     /// check if card is in hand
     for (auto it = cards.begin(); it != cards.end(); it++) {
-        if ((*it)->getName() == cardName) {
+        if (*it != nullptr && (*it)->getName() == cardName) {
             if ((*it)->getManaCost() <= mana) { /// we have enough mana to play it
                 std::cout << "PLAYED " << (*it)->getName() << "\n";
                 /// remove card from hand
