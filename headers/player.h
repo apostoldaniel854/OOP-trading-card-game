@@ -27,7 +27,7 @@ public:
     virtual void playTurn(int turn, Board& board, Player& opponent) = 0;
     void startTurn(int turn);
     void takeDamage(int damage);
-    static bool isGameOver(Player& opponent);
+    static bool isGameOver(const Player& opponent);
     Hand & getHand();
 
     int &getMana();
