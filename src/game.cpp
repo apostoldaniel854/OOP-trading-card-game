@@ -1,5 +1,5 @@
 #include "../headers/game.h"
-#include "../headers/exceptions/InvalidCard.h"
+#include "../headers/exceptions/invalidCard.h"
 
 Game::Game() : board(), player1("Player1", IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE)), player2("Player2", IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE)) {}
 
