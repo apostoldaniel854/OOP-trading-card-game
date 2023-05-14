@@ -74,9 +74,11 @@ void Game::playFriendlyTurn(int turn) {
         if (command == "play") {
             std::string cardName;
             std::cin >> cardName;
-            bool playable = player1.getHand().playCard(cardName, player1.getMana());
-            if (playable) {
-                board.addMinionToBoard(Minion(cardName), player1.getFriendly());
+            std::shared_ptr <Card> card = player1.getHand().playCard(cardName, player1.getMana());
+            if (card != nullptr) {
+                /// dynamic cast for minion
+                auto minionCard = std::dynamic_pointer_cast<MinionCard>(card);
+                board.addMinionToBoard(Minion(*minionCard), player1.getFriendly());
             } else {
                 std::cout << "Card is not playable. Try another one\n";
             }

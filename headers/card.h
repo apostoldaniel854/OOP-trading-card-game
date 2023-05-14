@@ -16,6 +16,7 @@ public:
     [[nodiscard]] int getType() const;
     [[nodiscard]] const std::string& getName() const;
     friend std::ostream& operator << (std::ostream& out, const Card& card);
+    virtual ~Card() = default;
 //    virtual void playCard() = 0;
 };
 

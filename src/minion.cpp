@@ -5,6 +5,7 @@
 
 Minion::Minion(std::string name, int health, int attack) : name(std::move(name)), health(health), attack(attack) {}
 Minion::Minion() : name("Wisp"), health(1), attack(1) {}
+Minion::Minion(const MinionCard& minionCard) : name(minionCard.getName()), health(minionCard.getHealth()), attack(minionCard.getAttack()) {}
 
 /// getter for attack
 int Minion::getAttack() const {

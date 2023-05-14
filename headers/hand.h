@@ -19,5 +19,5 @@ public:
     Hand& operator = (const Hand& hand);
 
     std::shared_ptr<Card> playRandomCard(int &mana);
-    bool playCard(const std::string &cardName, int &mana);
+    std::shared_ptr<Card> playCard(const std::string &cardName, int &mana);
 };

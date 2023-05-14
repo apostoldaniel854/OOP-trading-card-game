@@ -3,6 +3,7 @@
 #include <ostream>
 #include "hand.h"
 #include "deck.h"
+#include "board.h"
 #include "utils.h"
 
 class Player {

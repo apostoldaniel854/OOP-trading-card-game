@@ -1,6 +1,5 @@
 #pragma once
 #include "card.h"
-#include "minion.h"
 
 class MinionCard : public Card {
 private:
@@ -10,6 +9,9 @@ public:
     MinionCard(std::string  name, int manaCost, int type, int health, int attack);
 //    bool playCard() override;
     virtual ~MinionCard() = default;
+    /// getter
+    [[nodiscard]] int getHealth() const;
+    [[nodiscard]] int getAttack() const;
 };
 
 static const std::vector <MinionCard> minionCardsCatalog = {

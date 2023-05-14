@@ -7,6 +7,7 @@
 #include "minion.h"
 #include "player.h"
 #include "utils.h"
+#include <typeinfo>
 
 class Game {
 private:

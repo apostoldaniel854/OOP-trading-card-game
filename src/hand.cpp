@@ -1,5 +1,4 @@
 #include "../headers/hand.h"
-#include "../headers/minionCard.h"
 #include <iostream>
 
 void Hand::drawCard(const std::shared_ptr<Card> &card) {
@@ -57,7 +56,7 @@ std::shared_ptr<Card> Hand::playRandomCard(int &mana) {
 }
 
 
-bool Hand::playCard(const std::string& cardName, int& mana) {
+std::shared_ptr <Card> Hand::playCard(const std::string& cardName, int& mana) {
     /// check if card is in hand
     for (auto it = cards.begin(); it != cards.end(); it++) {
         std::shared_ptr<Card> card = *it;
@@ -67,10 +66,10 @@ bool Hand::playCard(const std::string& cardName, int& mana) {
                 /// remove card from hand
                 cards.erase(it);
                 mana -= card->getManaCost();
-                return true;
+                return card;
             }
-            return false;
+            return nullptr;
         }
     }
-    return false;
+    return nullptr;
 }
