@@ -1,4 +1,5 @@
 #include "../headers/game.h"
+#include "../headers/exceptions/InvalidCard.h"
 
 Game::Game() : board(), player1("Player1", IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE)), player2("Player2", IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE)) {}
 
@@ -72,22 +73,35 @@ void Game::playFriendlyTurn(int turn) {
         std::string command;
         std::cin >> command;
         if (command == "play") {
-            std::string cardName;
-            std::cin >> cardName;
-            std::shared_ptr <Card> card = player1.getHand().playCard(cardName, player1.getMana());
-            if (card != nullptr) {
-                /// dynamic cast for minion
-                auto minionCard = std::dynamic_pointer_cast<MinionCard>(card);
-                board.addMinionToBoard(Minion(*minionCard), player1.getFriendly());
-            } else {
-                std::cout << "Card is not playable. Try another one\n";
+            try {
+                std::string cardName;
+                std::cin >> cardName;
+                std::shared_ptr<Card> card = player1.getHand().playCard(cardName, player1.getMana());
+                if (card == nullptr) {
+                    throw InvalidCard(cardName);
+                }
+                if (card->getType() == MINION_CARD) {
+                    /// dynamic cast for minion
+                    auto minionCard = std::dynamic_pointer_cast<MinionCard>(card);
+                    if (minionCard == nullptr) {
+                        throw std::runtime_error("An error occurred while turning a card to a minion. Contact the developer to let them know about this bug\n");
+                    }
+                    board.addMinionToBoard(Minion(*minionCard), player1.getFriendly());
+                }
             }
+            catch (InvalidCard& e) {
+                std::cout << e.what() << "\n";
+            }
+            catch (std::runtime_error& e) {
+                std::cout << e.what() << "\n";
+            }
+
         } else if (command == "attack") {
             int attackerId, defenderId;
             std::cin >> attackerId >> defenderId;
             bool verdict = board.attackMinion(attackerId, defenderId, player1.getFriendly());
             if (!verdict) {
-                std::cout << "Invalid attack. Try another one\n";
+                std::cout << "Invalid attack\n";
             }
         } else if (command == "go_face") {
             int attackerId;

@@ -80,7 +80,7 @@ endfunction()
 ###############################################################################
 
 # NOTE: update executable name in .github/workflows/cmake.yml:25 when changing name here
-add_executable(${PROJECT_NAME} controller.cpp src/game.cpp src/hand.cpp src/card.cpp src/deck.cpp src/board.cpp src/player.cpp src/minion.cpp src/utils.cpp src/minionCard.cpp)
+add_executable(${PROJECT_NAME} controller.cpp src/game.cpp src/hand.cpp src/card.cpp src/deck.cpp src/board.cpp src/player.cpp src/minion.cpp src/utils.cpp src/minionCard.cpp headers/exceptions/invalidCard.h src/exceptions/invalidCard.cpp headers/exceptions/invalidMinion.h src/exceptions/invalidMinion.cpp)
 #add_subdirectory(src)
 ###############################################################################
 

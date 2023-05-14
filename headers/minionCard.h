@@ -7,8 +7,7 @@ private:
     int attack;
 public:
     MinionCard(std::string  name, int manaCost, int type, int health, int attack);
-//    bool playCard() override;
-    virtual ~MinionCard() = default;
+    ~MinionCard() override = default;
     /// getter
     [[nodiscard]] int getHealth() const;
     [[nodiscard]] int getAttack() const;
