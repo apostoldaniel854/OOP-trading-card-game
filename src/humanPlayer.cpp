@@ -4,7 +4,7 @@
 
 HumanPlayer::HumanPlayer(std::string  name, bool friendly, int health, Deck deck) : Player(std::move(name), friendly, health, std::move(deck)) {}
 
-void HumanPlayer::playTurn(int turn, Board& board, Player& opponent) {
+void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>& opponent) {
     startTurn(turn);
     while (true) {
         /// get command from user
@@ -22,7 +22,8 @@ void HumanPlayer::playTurn(int turn, Board& board, Player& opponent) {
                     /// dynamic cast for minion
                     auto minionCard = std::dynamic_pointer_cast<MinionCard>(card);
                     if (minionCard == nullptr) {
-                        throw std::runtime_error("An error occurred while turning a card to a minion. Contact the developer to let them know about this bug\n");
+                        throw std::runtime_error(
+                                "An error occurred while turning a card to a minion. Contact the developer to let them know about this bug\n");
                     }
                     board.addMinionToBoard(Minion(*minionCard), getFriendly());
                 }
@@ -45,7 +46,7 @@ void HumanPlayer::playTurn(int turn, Board& board, Player& opponent) {
             int attackerId;
             std::cin >> attackerId;
             int damage = board.getMinionById(attackerId, getFriendly()).getAttack();
-            opponent.takeDamage(damage);
+            opponent->takeDamage(damage);
             if (isGameOver(opponent))
                 return;
         } else if (command == "end_turn") {
@@ -61,7 +62,7 @@ void HumanPlayer::playTurn(int turn, Board& board, Player& opponent) {
             std::cout << getHealth() << "\n";
         } else if (command == "show_opponent") {
             std::cout << "Enemy health: ";
-            std::cout << opponent.getHealth() << "\n";
+            std::cout << opponent->getHealth() << "\n";
         } else if (command == "help") {
             showCommands();
         } else if (command == "quit") {

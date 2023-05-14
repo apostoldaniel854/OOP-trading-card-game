@@ -55,8 +55,8 @@ int &Player::getMana() {
     return this->mana;
 }
 
-bool Player::isGameOver(const Player& opponent) {
-    return opponent.getHealth() <= 0;
+bool Player::isGameOver(const std::shared_ptr<Player>& opponent) {
+    return opponent->getHealth() <= 0;
 }
 
 
