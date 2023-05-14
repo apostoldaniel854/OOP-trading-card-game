@@ -3,7 +3,8 @@
 
 Deck::Deck(int numCards) {
     for (int i = 0; i < numCards; i++) {
-        cards.emplace_back(new Card(cardsCatalog[getRandomInteger(0, (int)cardsCatalog.size() - 1)]));
+        std::shared_ptr <Card> card = std::make_shared <MinionCard> (minionCardsCatalog[getRandomInteger(0, (int)minionCardsCatalog.size() - 1)]);
+        cards.emplace_back(card);
     }
 }
 
@@ -13,7 +14,7 @@ std::shared_ptr<Card> Deck::drawCard() {
         cards.pop_back();
         return card;
     }
-    std::shared_ptr<Card> fatigueCard(new Card(FATIGUE_CARD_NAME, SPECIAL_CARD, 0));
+    std::shared_ptr<Card> fatigueCard(new MinionCard(FATIGUE_CARD_NAME, SPECIAL_CARD, 0, 0, 0));
     return fatigueCard;
 }
 

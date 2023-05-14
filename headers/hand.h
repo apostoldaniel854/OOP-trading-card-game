@@ -1,5 +1,6 @@
 #pragma once
 #include "card.h"
+#include "board.h"
 #include "utils.h"
 #include <iostream>
 #include <algorithm>

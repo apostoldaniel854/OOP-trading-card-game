@@ -1,5 +1,7 @@
 #pragma once
 #include "hand.h"
+#include "card.h"
+#include "minionCard.h"
 #include <vector>
 #include <memory>
 

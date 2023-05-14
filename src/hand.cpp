@@ -1,4 +1,5 @@
 #include "../headers/hand.h"
+#include "../headers/minionCard.h"
 #include <iostream>
 
 void Hand::drawCard(const std::shared_ptr<Card> &card) {
@@ -40,7 +41,7 @@ Hand& Hand::operator = (const Hand& hand) {
 }
 
 std::shared_ptr<Card> Hand::playRandomCard(int &mana) {
-    std::shared_ptr<Card> emptyCard(new Card(EMPTY_CARD_NAME, 0, MINION_CARD));
+    std::shared_ptr<Card> emptyCard(new MinionCard(EMPTY_CARD_NAME, 0, MINION_CARD, 1, 1));
     if (cards.empty())
         return  emptyCard;
     int randomCardIndex = getRandomInteger(0, (int)cards.size() - 1);
