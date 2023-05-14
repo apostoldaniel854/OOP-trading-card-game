@@ -1,10 +1,9 @@
 #include "../headers/humanPlayer.h"
 #include "../headers/exceptions/invalidCard.h"
 
-
 HumanPlayer::HumanPlayer(std::string  name, bool friendly, int health, Deck deck) : Player(std::move(name), friendly, health, std::move(deck)) {}
 
-void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>& opponent) {
+void HumanPlayer::playTurn(int turn, Board& board, std::shared_ptr<Player>& opponent) {
     startTurn(turn);
     while (true) {
         /// get command from user
@@ -26,6 +25,15 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
                                 "An error occurred while turning a card to a minion. Contact the developer to let them know about this bug\n");
                     }
                     board.addMinionToBoard(Minion(*minionCard), getFriendly());
+                }
+                else {
+                    /// dynamic cast for spell
+                    auto spellCard = std::dynamic_pointer_cast<SpellCard>(card);
+                    if (spellCard == nullptr) {
+                        throw std::runtime_error(
+                                "An error occurred while turning a card to a spell. Contact the developer to let them know about this bug\n");
+                    }
+                    opponent->takeDamage(spellCard->getDamage());
                 }
             }
             catch (InvalidCard& e) {
@@ -70,6 +78,8 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
         } else {
             std::cout << "Invalid command. You can type help for a full list of commands\n";
         }
+        if (isGameOver(opponent))
+            return;
     }
 }
 

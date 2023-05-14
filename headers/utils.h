@@ -20,6 +20,7 @@ static const bool IS_NOT_FRIENDLY = false;
 
 static const int SPECIAL_CARD = 0;
 static const int MINION_CARD = 1;
+static const int SPELL_CARD = 2;
 
 int getRandomInteger(int leftBound, int rightBound);
 void delay(double seconds);

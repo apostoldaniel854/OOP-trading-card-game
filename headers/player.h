@@ -24,7 +24,9 @@ public:
 
     [[nodiscard]] bool getFriendly() const;
     [[nodiscard]] int getHealth() const;
-    virtual void playTurn(int turn, Board& board, const std::shared_ptr<Player>& opponent) = 0;
+
+
+    virtual void playTurn(int turn, Board& board, std::shared_ptr<Player>& opponent) = 0;
     void startTurn(int turn);
     void takeDamage(int damage);
     static bool isGameOver(const std::shared_ptr<Player>& opponent);

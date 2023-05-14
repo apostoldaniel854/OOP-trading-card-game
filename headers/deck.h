@@ -2,6 +2,7 @@
 #include "hand.h"
 #include "card.h"
 #include "minionCard.h"
+#include "spellCard.h"
 #include <vector>
 #include <memory>
 

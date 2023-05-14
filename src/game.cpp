@@ -22,13 +22,18 @@ void Game::run() {
         /// FRIENDLY TURN
         delay(1);
         player1.playTurn(turn, board, player2Ptr);
+        /// downcasting
+        auto computerPlayer = std::dynamic_pointer_cast<ComputerPlayer>(player2Ptr);
+        player2 = *computerPlayer;
         if (isGameOver())
             return;
         /// ENEMY TURN
         delay(1);
         player2.playTurn(turn, board, player1Ptr);
+//        player1 = *player1Ptr;
         if (isGameOver())
             return;
+        std::cout << player1 << " " << player2 << "\n";
         turn++;
     }
     std::cout << "---------TURN LIMIT EXCEEDED---------\n";

@@ -3,7 +3,13 @@
 
 Deck::Deck(int numCards) {
     for (int i = 0; i < numCards; i++) {
-        std::shared_ptr <Card> card = std::make_shared <MinionCard> (minionCardsCatalog[getRandomInteger(0, (int)minionCardsCatalog.size() - 1)]);
+        std::shared_ptr <Card> card;
+        if (getRandomInteger(0, 2) != 0) {
+            card = std::make_shared <MinionCard> (minionCardsCatalog[getRandomInteger(0, (int)minionCardsCatalog.size() - 1)]);
+        }
+        else {
+            card = std::make_shared <SpellCard> (spellCardsCatalog[getRandomInteger(0, (int)spellCardsCatalog.size() - 1)]);
+        }
         cards.emplace_back(card);
     }
 }
