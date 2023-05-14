@@ -55,4 +55,8 @@ int &Player::getMana() {
     return this->mana;
 }
 
+bool Player::isGameOver(Player& opponent) {
+    return opponent.getHealth() <= 0;
+}
+
 

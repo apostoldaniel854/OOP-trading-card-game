@@ -6,14 +6,16 @@
 #include "deck.h"
 #include "minion.h"
 #include "player.h"
+#include "humanPlayer.h"
+#include "computerPlayer.h"
 #include "utils.h"
 #include <typeinfo>
 
 class Game {
 private:
     Board board;
-    Player player1;
-    Player player2;
+    HumanPlayer player1;
+    ComputerPlayer player2;
     void showState(int turn);
 public:
     Game();
@@ -21,10 +23,6 @@ public:
     friend std::ostream& operator << (std::ostream& out, const Game& game);
 
     void run();
-
-    void playEnemyTurn(int turn);
-
-    void playFriendlyTurn(int turn);
 
     bool isGameOver();
 
@@ -34,5 +32,4 @@ public:
 
     static void showWin();
 
-    static void showCommands();
 };

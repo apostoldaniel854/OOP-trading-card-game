@@ -24,9 +24,10 @@ public:
 
     [[nodiscard]] bool getFriendly() const;
     [[nodiscard]] int getHealth() const;
+    virtual void playTurn(int turn, Board& board, Player& opponent) = 0;
     void startTurn(int turn);
     void takeDamage(int damage);
-
+    static bool isGameOver(Player& opponent);
     Hand & getHand();
 
     int &getMana();
