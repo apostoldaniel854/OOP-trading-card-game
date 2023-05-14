@@ -27,7 +27,7 @@ public:
 
 
     virtual void playTurn(int turn, Board& board, std::shared_ptr<Player>& opponent) = 0;
-    void startTurn(int turn);
+    void startTurn(int turn, Board& board);
     void takeDamage(int damage);
     static bool isGameOver(const std::shared_ptr<Player>& opponent);
     Hand & getHand();

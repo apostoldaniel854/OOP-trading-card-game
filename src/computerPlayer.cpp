@@ -5,7 +5,7 @@ ComputerPlayer::ComputerPlayer(std::string  name, bool friendly, int health, Dec
 
 void ComputerPlayer::playTurn(int turn, Board& board, std::shared_ptr<Player>& opponent) {
     try {
-        startTurn(turn);
+        startTurn(turn, board);
         std::shared_ptr<Card> playedCard2 = playRandomCard();
         if (playedCard2->getName() != EMPTY_CARD_NAME) {
             if (playedCard2->getType() == MINION_CARD) {

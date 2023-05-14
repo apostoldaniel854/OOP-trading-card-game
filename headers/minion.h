@@ -13,6 +13,7 @@ private:
     std::string name;
     int health;
     int attack;
+    bool alreadyAttacked;
 public:
     Minion();
     Minion(std::string  name, int health, int attack);
@@ -27,6 +28,8 @@ public:
 
     [[nodiscard]] int getAttack() const;
     [[nodiscard]] const std::string& getName() const;
+    [[nodiscard]] bool hasAlreadyAttacked() const;
+    void setAlreadyAttacked(bool _alreadyAttacked);
 };
 
 

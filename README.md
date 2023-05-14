@@ -1,7 +1,7 @@
 ## PROIECT OOP
 
 ## Descriere
-Joc video de tip trading card game inspirat din [Hearthstone](https://en.wikipedia.org/wiki/Hearthstone) sau [Gwent](https://en.wikipedia.org/wiki/Gwent:_The_Witcher_Card_Game). 
+Joc video de tip trading card game inspirat din [Hearthstone](https://en.wikipedia.org/wiki/Hearthstone) si [Gwent](https://en.wikipedia.org/wiki/Gwent:_The_Witcher_Card_Game). 
 
 Vei juca (player 1) impotriva unui inamic (player 2), fiecare avand viata egala cu 30 la inceput, cate un deck (din care se trag carti) si un hand din care la fiecare tura se pot juca carti care costa mana. La inceputul jocului fiecare jucator are 0 mana. 
 

@@ -36,8 +36,20 @@ bool Player::getFriendly() const {
     return friendly;
 }
 
-void Player::startTurn(int turn) {
+void Player::startTurn(int turn, Board &board) {
     mana = std::min(MAX_MANA, turn);
+    if (friendly) {
+        auto friendlySide = board.getFriendlyMinions();
+        for (Minion &minion : friendlySide)
+            minion.setAlreadyAttacked(false);
+        board.setFriendlyMinions(friendlySide);
+    }
+    else {
+        auto enemySide = board.getEnemyMinions();
+        for (Minion &minion: enemySide)
+            minion.setAlreadyAttacked(false);
+        board.setEnemyMinions(enemySide);
+    }
 }
 
 int Player::getHealth() const {
@@ -45,8 +57,6 @@ int Player::getHealth() const {
 }
 
 void Player::takeDamage(int damage) {
-    std::cout << this->name << ":\n";
-    std::cout << "DAMAGE: " << damage << "\n";
     health -= damage;
 }
 Hand & Player::getHand() {

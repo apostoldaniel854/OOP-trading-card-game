@@ -3,9 +3,9 @@
 
 #include "../headers/minion.h"
 
-Minion::Minion(std::string name, int health, int attack) : name(std::move(name)), health(health), attack(attack) {}
-Minion::Minion() : name("Wisp"), health(1), attack(0) {}
-Minion::Minion(const MinionCard& minionCard) : name(minionCard.getName()), health(minionCard.getHealth()), attack(minionCard.getAttack()) {}
+Minion::Minion(std::string name, int health, int attack) : name(std::move(name)), health(health), attack(attack), alreadyAttacked(true) {}
+Minion::Minion() : name("Wisp"), health(1), attack(0), alreadyAttacked(true) {}
+Minion::Minion(const MinionCard& minionCard) : name(minionCard.getName()), health(minionCard.getHealth()), attack(minionCard.getAttack()), alreadyAttacked(true) {}
 
 int Minion::getAttack() const {
     return attack;
@@ -33,5 +33,13 @@ const std::string& Minion::getName() const {
 
 bool Minion::isDead() const {
     return health <= 0;
+}
+
+bool Minion::hasAlreadyAttacked() const {
+    return alreadyAttacked;
+}
+
+void Minion::setAlreadyAttacked(bool _alreadyAttacked) {
+    alreadyAttacked = _alreadyAttacked;
 }
 

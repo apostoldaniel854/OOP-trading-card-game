@@ -9,6 +9,14 @@ const std::vector<Minion>& Board::getEnemyMinions() const {
     return enemyMinions;
 }
 
+void Board::setFriendlyMinions(const std::vector<Minion> &_friendlyMinions) {
+    Board::friendlyMinions = _friendlyMinions;
+}
+
+void Board::setEnemyMinions(const std::vector<Minion> &_enemyMinions) {
+    Board::enemyMinions = _enemyMinions;
+}
+
 void Board::addMinionToBoard(const Minion& minion, bool friendly) {
     if (friendly) {
         friendlyMinions.emplace_back(minion);
@@ -39,18 +47,29 @@ void Board::addMinionToBoard(const Minion& minion, bool friendly) {
 
 bool Board::attackMinion(int attackerId, int defenderId, bool friendly) {
     try {
-        if (attackerId < 0 || attackerId >= (int) friendlyMinions.size())
-            throw InvalidMinion(attackerId);
-        if (defenderId < 0 || defenderId >= (int) enemyMinions.size())
-            throw InvalidMinion(defenderId);
         if (friendly) {
+            if (attackerId < 0 || attackerId >= (int) friendlyMinions.size())
+                throw InvalidMinion(attackerId);
+            if (defenderId < 0 || defenderId >= (int) enemyMinions.size())
+                throw InvalidMinion(defenderId);
+            if (friendlyMinions[attackerId].hasAlreadyAttacked())
+                throw InvalidMinion(attackerId);
             friendlyMinions[attackerId].attackMinion(enemyMinions[defenderId]);
+            friendlyMinions[attackerId].setAlreadyAttacked(true);
             if (friendlyMinions[attackerId].isDead())
                 friendlyMinions.erase(friendlyMinions.begin() + attackerId);
             if (enemyMinions[defenderId].isDead())
                 enemyMinions.erase(enemyMinions.begin() + defenderId);
-        } else {
+        }
+        else {
+            if (attackerId < 0 || attackerId >= (int) enemyMinions.size())
+                throw InvalidMinion(attackerId);
+            if (defenderId < 0 || defenderId >= (int) friendlyMinions.size())
+                throw InvalidMinion(defenderId);
+            if (enemyMinions[attackerId].hasAlreadyAttacked())
+                throw InvalidMinion(attackerId);
             enemyMinions[attackerId].attackMinion(friendlyMinions[defenderId]);
+            enemyMinions[attackerId].setAlreadyAttacked(true);
             if (enemyMinions[attackerId].isDead())
                 enemyMinions.erase(enemyMinions.begin() + attackerId);
             if (friendlyMinions[defenderId].isDead())

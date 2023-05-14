@@ -12,8 +12,7 @@ void Game::showState(int turn) {
 
 void Game::run() {
 //    std::cout << Deck(MAX_DECK_SIZE) << "\n"; /// test required for hw 1
-    std::shared_ptr<Player> player1Ptr = std::make_shared<HumanPlayer>(player1);
-    std::shared_ptr<Player> player2Ptr = std::make_shared<ComputerPlayer>(player2);
+
     std::cout << "-------------NEW GAME---------------\n";
     int turn = 1;
     while (turn <= MAX_TURNS) {
@@ -21,6 +20,8 @@ void Game::run() {
         showState(turn);
         /// FRIENDLY TURN
         delay(1);
+
+        std::shared_ptr<Player> player2Ptr = std::make_shared<ComputerPlayer>(player2);
         player1.playTurn(turn, board, player2Ptr);
         /// downcasting
         auto computerPlayer = std::dynamic_pointer_cast<ComputerPlayer>(player2Ptr);
@@ -29,11 +30,14 @@ void Game::run() {
             return;
         /// ENEMY TURN
         delay(1);
+        std::shared_ptr<Player> player1Ptr = std::make_shared<HumanPlayer>(player1);
         player2.playTurn(turn, board, player1Ptr);
-//        player1 = *player1Ptr;
+        /// downcasting
+        auto humanPlayer = std::dynamic_pointer_cast<HumanPlayer>(player1Ptr);
+        player1 = *humanPlayer;
         if (isGameOver())
             return;
-        std::cout << player1 << " " << player2 << "\n";
+    //    std::cout << player1 << " " << player2 << "\n";
         turn++;
     }
     std::cout << "---------TURN LIMIT EXCEEDED---------\n";
