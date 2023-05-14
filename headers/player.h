@@ -19,7 +19,7 @@ public:
 
     void endTurn();
 
-    Card playRandomCard();
+    std::shared_ptr<Card> playRandomCard();
 
     [[nodiscard]] bool getFriendly() const;
     [[nodiscard]] int getHealth() const;

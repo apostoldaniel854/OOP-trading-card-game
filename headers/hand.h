@@ -7,16 +7,16 @@
 
 class Hand {
 private:
-    std::vector<Card> cards;
+    std::vector<std::shared_ptr<Card>> cards;
 public:
     Hand()= default;
     Hand(const Hand& hand);
     ~Hand();
-    void drawCard(const Card& card);
+    void drawCard(const std::shared_ptr<Card>& card);
     friend std::ostream& operator << (std::ostream& out, const Hand& hand);
-    [[nodiscard]] const std::vector <Card>& getCardsInHand() const;
+    [[nodiscard]] const std::vector <std::shared_ptr<Card>>& getCardsInHand() const;
     Hand& operator = (const Hand& hand);
 
-    Card playRandomCard(int &mana);
+    std::shared_ptr<Card> playRandomCard(int &mana);
     bool playCard(const std::string &cardName, int &mana);
 };

@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "utils.h"
+#include <memory>
 
 class Card {
 private:

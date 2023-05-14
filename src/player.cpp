@@ -18,8 +18,8 @@ std::ostream &operator<<(std::ostream &out, const Player &player) {
 
 void Player::endTurn() {
     static auto fatigueDamage = 0;
-    Card drawnCard = deck.drawCard();
-    if (drawnCard.getType() == SPECIAL_CARD) {
+    std::shared_ptr<Card> drawnCard = deck.drawCard();
+    if (drawnCard->getType() == SPECIAL_CARD) {
         fatigueDamage++;
         this->health -= fatigueDamage;
         return;
@@ -27,7 +27,7 @@ void Player::endTurn() {
     hand.drawCard(drawnCard);
 }
 
-Card Player::playRandomCard() {
+std::shared_ptr<Card> Player::playRandomCard() {
     std::cout << this->name << ":\n";
     return this->hand.playRandomCard(this->mana);
 }

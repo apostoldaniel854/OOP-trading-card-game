@@ -44,9 +44,9 @@ std::ostream& operator << (std::ostream& out, const Game& game) {
 
 void Game::playEnemyTurn(int turn) {
     player2.startTurn(turn);
-    Card playedCard2 = player2.playRandomCard();
-    if (playedCard2.getName() != EMPTY_CARD_NAME)
-        board.addMinionToBoard(Minion(playedCard2.getName()), player2.getFriendly());
+    std::shared_ptr <Card> playedCard2 = player2.playRandomCard();
+    if (playedCard2->getName() != EMPTY_CARD_NAME)
+        board.addMinionToBoard(Minion(playedCard2->getName()), player2.getFriendly());
     player2.endTurn();
 }
 
@@ -120,7 +120,7 @@ void Game::playFriendlyTurn(int turn) {
 
 
 bool Game::isGameOver() {
-    bool deadF = (player1.getHealth() < 0), deadE = (player2.getHealth() < 0);
+    bool deadF = (player1.getHealth() <= 0), deadE = (player2.getHealth() <= 0);
     if (deadF && deadE) {
         showDraw();
         return true;
