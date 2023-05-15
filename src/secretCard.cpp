@@ -4,3 +4,6 @@ SecretCard::SecretCard(std::string  name, int manaCost, int type, int duration) 
 
 }
 
+int SecretCard::getDuration() const {
+    return duration;
+}

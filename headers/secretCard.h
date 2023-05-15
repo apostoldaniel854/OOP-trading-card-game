@@ -8,6 +8,7 @@ public:
     SecretCard(std::string  name, int manaCost, int type, int duration);
     ~SecretCard() override = default;
     /// getter
+    [[nodiscard]] int getDuration() const;
 
 };
 

@@ -1,5 +1,5 @@
 #include "../headers/game.h"
-
+#include "../headers/secretCard.h"
 Game::Game() : board(), player1("Player1", IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE)), player2("Player2", IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE)) {}
 
 void Game::showState(int turn) {
@@ -12,7 +12,8 @@ void Game::showState(int turn) {
 
 void Game::run() {
 //    std::cout << Deck(MAX_DECK_SIZE) << "\n"; /// test required for hw 1
-
+    SecretCard secretCard("Secret", 0, SECRET_CARD, 2);
+    std::cout << secretCard.getDuration() << "\n";
     std::cout << "-------------NEW GAME---------------\n";
     int turn = 1;
     while (turn <= MAX_TURNS) {
