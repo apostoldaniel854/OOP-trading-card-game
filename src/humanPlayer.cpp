@@ -53,10 +53,16 @@ void HumanPlayer::playTurn(int turn, Board& board, std::shared_ptr<Player>& oppo
         } else if (command == "go_face") {
             int attackerId;
             std::cin >> attackerId;
-            int damage = board.getMinionById(attackerId, getFriendly()).getAttack();
-            opponent->takeDamage(damage);
-            if (isGameOver(opponent))
-                return;
+            Minion minion = board.getMinionById(attackerId, getFriendly());
+            if (minion.hasAlreadyAttacked()) {
+                std::cout << "This minion cannot attack this turn\n";
+            }
+            else {
+                int damage = minion.getAttack();
+                opponent->takeDamage(damage);
+                if (isGameOver(opponent))
+                    return;
+            }
         } else if (command == "end_turn") {
             std::cout << "Turn ended\n";
             endTurn();
