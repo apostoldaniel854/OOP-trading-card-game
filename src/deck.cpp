@@ -31,3 +31,20 @@ std::ostream& operator << (std::ostream &out, const Deck &deck) {
         out << *card;
     return out;
 }
+
+Deck& Deck::operator = (const Deck& deck) {
+    if (this != &deck)
+        deepCopy(deck);
+    return *this;
+}
+
+Deck::Deck(const Deck& deck) {
+    deepCopy(deck);
+}
+
+void Deck::deepCopy(const Deck& deck) {
+    cards.clear();
+    for (const std::shared_ptr<Card>& card : deck.cards) {
+        cards.emplace_back(card->clone());
+    }
+}

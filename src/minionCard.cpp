@@ -8,3 +8,7 @@ int MinionCard::getHealth() const {
 int MinionCard::getAttack() const {
     return attack;
 }
+
+std::shared_ptr<Card> MinionCard::clone() const {
+    return std::make_shared<MinionCard>(name, manaCost, type, health, attack);
+}

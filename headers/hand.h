@@ -20,4 +20,6 @@ public:
 
     std::shared_ptr<Card> playRandomCard(int &mana);
     std::shared_ptr<Card> playCard(const std::string &cardName, int &mana);
+    void deepCopy(const Hand& hand);
+
 };

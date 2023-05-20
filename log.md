@@ -11,14 +11,12 @@
 
 ## Fixes
 - [ ] modificat catch try (acum nu pun in interiorul functiei) + exceptii proprii (poate .at folosit de asemenea?) - probabil scapat de comparatia cu nullpointer (in loc sa returnez nullptr, dau throw)
-- [ ] pus exemplu random de date de intrare
-- [ ] sa se fac copieri corecte: apelat clone în cc, de făcut cu copy&swap în op=
-- [ ] schimbat dynamic_cast cu functii virtuale si gandit la un dynamic cast cu sens
-- [ ] schimbat dynamic_cast si functii virtuale la player
+- [X] pus exemplu random de date de intrare
+- [X] sa se fac copieri corecte: apelat clone în cc, de făcut cu copy&swap în op=
+- [ ] schimbat dynamic_cast cu functii virtuale si gandit la un dynamic cast cu sens (la card)
+- [X] schimbat dynamic_cast si functii virtuale la player
 - [X] rezolvat problema cu atacul (trebuie)
-- [ ] mai multe tipuri de carti
+- [X] mai multe tipuri de carti
 - [ ] pus instantele de carti in fisier separat (optional)
-
-
 
 

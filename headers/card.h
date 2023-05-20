@@ -5,7 +5,7 @@
 #include <memory>
 
 class Card {
-private:
+protected:
     std::string name;
     int manaCost;
     int type;
@@ -17,6 +17,7 @@ public:
     [[nodiscard]] const std::string& getName() const;
     friend std::ostream& operator << (std::ostream& out, const Card& card);
     virtual ~Card() = default;
+    virtual std::shared_ptr<Card> clone() const = 0;
 };
 
 

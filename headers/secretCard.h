@@ -9,6 +9,8 @@ public:
     ~SecretCard() override = default;
     /// getter
     [[nodiscard]] int getDuration() const;
+    /// clone
+    [[nodiscard]] std::shared_ptr<Card> clone() const override;
 
 };
 

@@ -10,7 +10,13 @@ class Deck {
 private:
     std::vector <std::shared_ptr<Card>> cards;
 public:
-    explicit Deck(int numCards);
+    Deck(int numCards);
     std::shared_ptr<Card> drawCard();
+    /// assignment operator =
+    Deck& operator = (const Deck& deck);
+    /// copy constructor
+    Deck(const Deck& deck);
+    /// deep copy
+    void deepCopy(const Deck& deck);
     friend std::ostream& operator << (std::ostream& out, const Deck &deck);
 };

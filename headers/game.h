@@ -14,8 +14,7 @@
 class Game {
 private:
     Board board;
-    HumanPlayer player1;
-    ComputerPlayer player2;
+    std::shared_ptr<Player> player1, player2;
     void showState(int turn);
 public:
     Game();

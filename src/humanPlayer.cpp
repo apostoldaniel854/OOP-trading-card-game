@@ -1,9 +1,9 @@
 #include "../headers/humanPlayer.h"
 #include "../headers/exceptions/invalidCard.h"
 
-HumanPlayer::HumanPlayer(std::string  name, bool friendly, int health, Deck deck) : Player(std::move(name), friendly, health, std::move(deck)) {}
+HumanPlayer::HumanPlayer(std::string  name, bool friendly, int health, const Deck& deck) : Player(std::move(name), friendly, health, std::move(deck)) {}
 
-void HumanPlayer::playTurn(int turn, Board& board, std::shared_ptr<Player>& opponent) {
+void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>& opponent) {
     startTurn(turn, board);
     while (true) {
         /// get command from user

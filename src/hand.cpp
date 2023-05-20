@@ -25,18 +25,21 @@ Hand::~Hand() {
     cards.clear();
 }
 
+
 Hand::Hand(const Hand& hand) {
-    for (const std::shared_ptr<Card>& card : hand.getCardsInHand())
-        cards.emplace_back(card);
+    deepCopy(hand);
 }
 
-Hand& Hand::operator = (const Hand& hand) {
-    if (this == &hand)
-        return *this;
+Hand& Hand::operator = (const Hand& hand) { /// deep copy assignment
+    if (this != &hand) {
+        deepCopy(hand);
+    }
+    return *this;
+}
+void Hand::deepCopy(const Hand& hand) {
     cards.clear();
     for (const std::shared_ptr<Card>& card : hand.getCardsInHand())
-        cards.emplace_back(card);
-    return *this;
+        cards.emplace_back(card->clone());
 }
 
 std::shared_ptr<Card> Hand::playRandomCard(int &mana) {

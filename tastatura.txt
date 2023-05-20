@@ -1,1 +1,20 @@
+2
+show_board
+show_hand
+play Orc
+play Imp
+end_turn
+play Fireball
+show_opponent
+show_player
+show_board
+attack 0 0
+go_face 0
+end_turn
+play Arcane
+play Dragon
+go_face 0
+go_face 1
+ComandaInvalidaPentruverificare
+play CarteInvalidaPentruVerificare
 quit

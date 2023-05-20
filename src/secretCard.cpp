@@ -7,3 +7,7 @@ SecretCard::SecretCard(std::string  name, int manaCost, int type, int duration) 
 int SecretCard::getDuration() const {
     return duration;
 }
+
+std::shared_ptr<Card> SecretCard::clone() const {
+    return std::make_shared<SecretCard>(name, manaCost, type, duration);
+}

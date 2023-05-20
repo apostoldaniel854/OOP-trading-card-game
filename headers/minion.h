@@ -23,7 +23,6 @@ public:
 
     void attackMinion(Minion &minion);
 
-
     [[nodiscard]] bool isDead() const;
 
     [[nodiscard]] int getAttack() const;
