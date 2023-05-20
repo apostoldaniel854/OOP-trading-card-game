@@ -1,4 +1,7 @@
 #include "../headers/computerPlayer.h"
+#include "../headers/exceptions/invalidMinion.h"
+#include "../headers/exceptions/invalidCard.h"
+
 #include <utility>
 
 ComputerPlayer::ComputerPlayer(std::string  name, bool friendly, int health, const Deck& deck) : Player(std::move(name), friendly, health, std::move(deck)) {}
@@ -27,7 +30,13 @@ void ComputerPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Play
 
     }
     catch (std::runtime_error& e) {
-        std::cout << e.what() << "\n";
+        std::cout << e.what();
+    }
+    catch (InvalidCard& e) {
+        std::cout << e.what();
+    }
+    catch (InvalidMinion& e) {
+        std::cout << e.what();
     }
     if (isGameOver(opponent))
         return;
