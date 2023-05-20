@@ -10,7 +10,7 @@ class Deck {
 private:
     std::vector <std::shared_ptr<Card>> cards;
 public:
-    Deck(int numCards);
+    explicit Deck(int numCards);
     std::shared_ptr<Card> drawCard();
     /// assignment operator =
     Deck& operator = (const Deck& deck);
