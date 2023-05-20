@@ -45,58 +45,45 @@ void Board::addMinionToBoard(const Minion& minion, bool friendly) {
    return out;
 }
 
-bool Board::attackMinion(int attackerId, int defenderId, bool friendly) {
-    try {
-        if (friendly) {
-            if (attackerId < 0 || attackerId >= (int) friendlyMinions.size())
-                throw InvalidMinion(attackerId);
-            if (defenderId < 0 || defenderId >= (int) enemyMinions.size())
-                throw InvalidMinion(defenderId);
-            if (friendlyMinions[attackerId].hasAlreadyAttacked())
-                throw InvalidMinion(attackerId);
-            friendlyMinions[attackerId].attackMinion(enemyMinions[defenderId]);
-            friendlyMinions[attackerId].setAlreadyAttacked(true);
-            if (friendlyMinions[attackerId].isDead())
-                friendlyMinions.erase(friendlyMinions.begin() + attackerId);
-            if (enemyMinions[defenderId].isDead())
-                enemyMinions.erase(enemyMinions.begin() + defenderId);
-        }
-        else {
-            if (attackerId < 0 || attackerId >= (int) enemyMinions.size())
-                throw InvalidMinion(attackerId);
-            if (defenderId < 0 || defenderId >= (int) friendlyMinions.size())
-                throw InvalidMinion(defenderId);
-            if (enemyMinions[attackerId].hasAlreadyAttacked())
-                throw InvalidMinion(attackerId);
-            enemyMinions[attackerId].attackMinion(friendlyMinions[defenderId]);
-            enemyMinions[attackerId].setAlreadyAttacked(true);
-            if (enemyMinions[attackerId].isDead())
-                enemyMinions.erase(enemyMinions.begin() + attackerId);
-            if (friendlyMinions[defenderId].isDead())
-                friendlyMinions.erase(friendlyMinions.begin() + defenderId);
-        }
+void Board::attackMinion(int attackerId, int defenderId, bool friendly) {
+    if (friendly) {
+        if (attackerId < 0 || attackerId >= (int) friendlyMinions.size())
+            throw InvalidMinion(attackerId);
+        if (defenderId < 0 || defenderId >= (int) enemyMinions.size())
+            throw InvalidMinion(defenderId);
+        if (friendlyMinions[attackerId].hasAlreadyAttacked())
+            throw InvalidMinion(attackerId);
+        friendlyMinions[attackerId].attackMinion(enemyMinions[defenderId]);
+        friendlyMinions[attackerId].setAlreadyAttacked(true);
+        if (friendlyMinions[attackerId].isDead())
+            friendlyMinions.erase(friendlyMinions.begin() + attackerId);
+        if (enemyMinions[defenderId].isDead())
+            enemyMinions.erase(enemyMinions.begin() + defenderId);
     }
-    catch (InvalidMinion& e) {
-        std::cout << e.what() << std::endl;
-        return false;
+    else {
+        if (attackerId < 0 || attackerId >= (int) enemyMinions.size())
+            throw InvalidMinion(attackerId);
+        if (defenderId < 0 || defenderId >= (int) friendlyMinions.size())
+            throw InvalidMinion(defenderId);
+        if (enemyMinions[attackerId].hasAlreadyAttacked())
+            throw InvalidMinion(attackerId);
+        enemyMinions[attackerId].attackMinion(friendlyMinions[defenderId]);
+        enemyMinions[attackerId].setAlreadyAttacked(true);
+        if (enemyMinions[attackerId].isDead())
+            enemyMinions.erase(enemyMinions.begin() + attackerId);
+        if (friendlyMinions[defenderId].isDead())
+            friendlyMinions.erase(friendlyMinions.begin() + defenderId);
     }
-    return true;
 }
 
 Minion Board::getMinionById(int id, bool friendly) {
-    try {
-        if (friendly) {
-            if (id < 0 || id >= (int) friendlyMinions.size())
-                throw InvalidMinion(id);
-            return friendlyMinions[id];
-        } else {
-            if (id < 0 || id >= (int) enemyMinions.size())
-                throw InvalidMinion(id);
-            return enemyMinions[id];
-        }
-    }
-    catch (InvalidMinion& e) {
-        std::cout << e.what() << std::endl;
-        return {};
+    if (friendly) {
+        if (id < 0 || id >= (int) friendlyMinions.size())
+            throw InvalidMinion(id);
+        return friendlyMinions[id];
+    } else {
+        if (id < 0 || id >= (int) enemyMinions.size())
+            throw InvalidMinion(id);
+        return enemyMinions[id];
     }
 }

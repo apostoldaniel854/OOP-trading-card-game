@@ -1,4 +1,5 @@
 #include "../headers/hand.h"
+#include "../headers/exceptions/invalidCard.h"
 #include <iostream>
 
 void Hand::drawCard(const std::shared_ptr<Card> &card) {
@@ -45,7 +46,7 @@ void Hand::deepCopy(const Hand& hand) {
 std::shared_ptr<Card> Hand::playRandomCard(int &mana) {
     std::shared_ptr<Card> emptyCard(new MinionCard(EMPTY_CARD_NAME, 0, MINION_CARD, 1, 1));
     if (cards.empty())
-        return  emptyCard;
+        throw InvalidCard("No cards in hand!");
     int randomCardIndex = getRandomInteger(0, (int)cards.size() - 1);
     std::shared_ptr<Card> playedCard = cards[randomCardIndex];
     if (playedCard->getManaCost() <= mana) {
@@ -55,7 +56,7 @@ std::shared_ptr<Card> Hand::playRandomCard(int &mana) {
         cards.erase(cards.begin() + randomCardIndex);
         return playedCard;
     }
-    return emptyCard;
+    throw InvalidCard("Not enough mana to play this card!");
 }
 
 
@@ -71,8 +72,8 @@ std::shared_ptr <Card> Hand::playCard(const std::string& cardName, int& mana) {
                 mana -= card->getManaCost();
                 return card;
             }
-            return nullptr;
+            throw InvalidCard("Not enough mana to play this card!");
         }
     }
-    return nullptr;
+    throw InvalidCard("Card not found in hand!");
 }

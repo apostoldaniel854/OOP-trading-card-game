@@ -20,7 +20,7 @@ public:
     friend std::ostream& operator << (std::ostream& out, const Board& board);
 
 
-    bool attackMinion(int attackerId, int defenderId, bool friendly);
+    void attackMinion(int attackerId, int defenderId, bool friendly);
 
     Minion getMinionById(int id, bool friendly);
 };

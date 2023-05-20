@@ -1,5 +1,6 @@
 #include "../headers/humanPlayer.h"
 #include "../headers/exceptions/invalidCard.h"
+#include "../headers/exceptions/invalidMinion.h"
 
 HumanPlayer::HumanPlayer(std::string  name, bool friendly, int health, const Deck& deck) : Player(std::move(name), friendly, health, std::move(deck)) {}
 
@@ -14,9 +15,6 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
                 std::string cardName;
                 std::cin >> cardName;
                 std::shared_ptr<Card> card = getHand().playCard(cardName, getMana());
-                if (card == nullptr) {
-                    throw InvalidCard(cardName);
-                }
                 if (card->getType() == MINION_CARD) {
                     /// dynamic cast for minion
                     auto minionCard = std::dynamic_pointer_cast<MinionCard>(card);
@@ -39,29 +37,33 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
             catch (InvalidCard& e) {
                 std::cout << e.what() << "\n";
             }
-            catch (std::runtime_error& e) {
-                std::cout << e.what() << "\n";
-            }
 
         } else if (command == "attack") {
-            int attackerId, defenderId;
-            std::cin >> attackerId >> defenderId;
-            bool verdict = board.attackMinion(attackerId, defenderId, getFriendly());
-            if (!verdict) {
-                std::cout << "Invalid attack\n";
+            try {
+                int attackerId, defenderId;
+                std::cin >> attackerId >> defenderId;
+                board.attackMinion(attackerId, defenderId, getFriendly());
             }
-        } else if (command == "go_face") {
-            int attackerId;
-            std::cin >> attackerId;
-            Minion minion = board.getMinionById(attackerId, getFriendly());
-            if (minion.hasAlreadyAttacked()) {
-                std::cout << "This minion cannot attack this turn\n";
+            catch (InvalidMinion& e) {
+                std::cout << e.what();
             }
-            else {
-                int damage = minion.getAttack();
-                opponent->takeDamage(damage);
-                if (isGameOver(opponent))
-                    return;
+        }
+        else if (command == "go_face") {
+            try {
+                int attackerId;
+                std::cin >> attackerId;
+                Minion minion = board.getMinionById(attackerId, getFriendly());
+                if (minion.hasAlreadyAttacked()) {
+                    std::cout << "This minion cannot attack this turn\n";
+                } else {
+                    int damage = minion.getAttack();
+                    opponent->takeDamage(damage);
+                    if (isGameOver(opponent))
+                        return;
+                }
+            }
+            catch (InvalidMinion& e) {
+                std::cout << e.what();
             }
         } else if (command == "end_turn") {
             std::cout << "Turn ended\n";
