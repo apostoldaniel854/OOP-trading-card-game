@@ -28,3 +28,5 @@ static const int OPPONENT_TARGET = 0;
 
 int getRandomInteger(int leftBound, int rightBound);
 void delay(double seconds);
+
+

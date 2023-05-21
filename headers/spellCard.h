@@ -14,11 +14,3 @@ public:
     ~SpellCard() override = default;
     bool playCard(Board& board, bool friendly) override;
 };
-
-static const std::vector <SpellCard> spellCardsCatalog = {
-        SpellCard("Fireball", 4, SPELL_CARD, 6),
-        SpellCard("Fireblast", 2, SPELL_CARD, 3),
-        SpellCard("Arcane", 0, SPELL_CARD, 1),
-        SpellCard("Frostbolt", 3, SPELL_CARD, 4),
-        SpellCard("Lightning", 5, SPELL_CARD, 7)
-};

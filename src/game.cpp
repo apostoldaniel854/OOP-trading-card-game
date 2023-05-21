@@ -11,18 +11,23 @@ Game::Game() : board() {
         std::cout << "Invalid choice. Try again.\n";
         std::cin >> choice;
     }
-
+    std::cout << "Player 1 name:\n";
+    std::string name1;
+    std::cin >> name1;
+    std::cout << "Player 2 name:\n";
+    std::string name2;
+    std::cin >> name2;
     if (choice == 1) {
-        player1 = std::make_shared<HumanPlayer>("Player1", IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
-        player2 = std::make_shared<HumanPlayer>("Player2", IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
+        player1 = std::make_shared<HumanPlayer>(name1, IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
+        player2 = std::make_shared<HumanPlayer>(name2, IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
     }
     else if (choice == 2) {
-        player1 = std::make_shared<HumanPlayer>("Player1", IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
-        player2 = std::make_shared<ComputerPlayer>("Player2", IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
+        player1 = std::make_shared<HumanPlayer>(name1, IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
+        player2 = std::make_shared<ComputerPlayer>(name2, IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
     }
     else {
-        player1 = std::make_shared<ComputerPlayer>("Player1", IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
-        player2 = std::make_shared<ComputerPlayer>("Player2", IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
+        player1 = std::make_shared<ComputerPlayer>(name1, IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
+        player2 = std::make_shared<ComputerPlayer>(name2, IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
     }
 }
 
@@ -35,7 +40,7 @@ void Game::showState(int turn) {
 }
 
 void Game::run() {
-//    std::cout << Deck(MAX_DECK_SIZE) << "\n"; /// test required for hw 1
+    std::cout << Deck(MAX_DECK_SIZE) << "\n"; /// test required for hw 1
 //    SecretCard secretCard("Secret", 0, SECRET_CARD, 2);
 //    std::cout << secretCard.getDuration() << "\n";
     std::cout << "-------------NEW GAME---------------\n";

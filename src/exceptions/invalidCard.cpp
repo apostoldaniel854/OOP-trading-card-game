@@ -1,7 +1,7 @@
 #include "../../headers/exceptions/invalidCard.h"
 
 
-InvalidCard::InvalidCard(const std::string& cardName) : message(cardName + " is not in your hand or you dont have any mana") {}
+InvalidCard::InvalidCard(const std::string& _message) : message(_message) {}
 
 const char* InvalidCard::what() const noexcept {
     return message.c_str();

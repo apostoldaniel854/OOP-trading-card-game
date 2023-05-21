@@ -17,7 +17,6 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
                 std::shared_ptr<Card> card = getHand().playCard(cardName, getMana());
                 bool notDone = card->playCard(board, getFriendly());
                 if (notDone) {
-                    /// dynamic cast for spell
                     auto spellCard = std::dynamic_pointer_cast<SpellCard>(card);
                     opponent->takeDamage(spellCard->getDamage());
                 }
@@ -33,7 +32,7 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
                 board.attackMinion(attackerId, defenderId, getFriendly());
             }
             catch (InvalidMinion& e) {
-                std::cout << e.what();
+                std::cout << e.what() << "\n";
             }
         }
         else if (command == "go_face") {
@@ -51,7 +50,7 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
                 }
             }
             catch (InvalidMinion& e) {
-                std::cout << e.what();
+                std::cout << e.what() << "\n";
             }
         } else if (command == "end_turn") {
             std::cout << "Turn ended\n";
@@ -80,16 +79,9 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
 }
 
 void HumanPlayer::showCommands() {
-    /// commands from README.md file Documentation section
-    std::cout << "FULL LIST OF COMMANDS:\n";
-    std::cout << "help - show this message\n";
-    std::cout << "quit - quit the game\n";
-    std::cout << "end_turn - end your turn\n";
-    std::cout << "show_board - show the board\n";
-    std::cout << "show_hand - show your hand\n";
-    std::cout << "show_opponent - show opponent's health\n";
-    std::cout << "show_player - show your health\n";
-    std::cout << "play <card_name> - play a card from your hand\n";
-    std::cout << "attack <attacker_id> <defender_id> - attack with a minion\n";
-    std::cout << "go_face <attacker_id> - attack the opponent with a minion\n";
+    std::ifstream commandsFile;
+    commandsFile.open("../data/commands.txt");
+    std::cout << commandsFile.rdbuf();
+    commandsFile.close();
+    std::cout << "\n";
 }
