@@ -1,9 +1,7 @@
 #pragma once
-#include "card.h"
 #include <string>
 #include <map>
 #include <ostream>
-#include "minionCard.h"
 
 
 
@@ -18,10 +16,10 @@ public:
     Minion();
     Minion(std::string  name, int health, int attack);
     explicit Minion(const std::string& name);
-    explicit Minion(const MinionCard& minionCard);
     friend std::ostream& operator << (std::ostream& out, const Minion& minion);
 
     void attackMinion(Minion &minion);
+    void damageMinion(int damage);
 
     [[nodiscard]] bool isDead() const;
 

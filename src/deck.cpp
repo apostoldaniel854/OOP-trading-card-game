@@ -20,7 +20,7 @@ std::shared_ptr<Card> Deck::drawCard() {
         cards.pop_back();
         return card;
     }
-    return std::make_shared<MinionCard>(FATIGUE_CARD_NAME, SPECIAL_CARD, 0, 0, 0);;
+    return std::make_shared<MinionCard>(FATIGUE_CARD_NAME, SPECIAL_CARD, 0, 0, 0);
 }
 
 

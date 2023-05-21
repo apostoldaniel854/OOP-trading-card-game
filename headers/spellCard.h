@@ -12,6 +12,7 @@ public:
     /// clone
     [[nodiscard]] std::shared_ptr<Card> clone() const override;
     ~SpellCard() override = default;
+    bool playCard(Board& board, bool friendly) override;
 };
 
 static const std::vector <SpellCard> spellCardsCatalog = {

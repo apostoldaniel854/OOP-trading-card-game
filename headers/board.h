@@ -1,8 +1,8 @@
 #pragma once
 #include <iostream>
 #include <vector>
-#include "card.h"
 #include "minion.h"
+#include "utils.h"
 
 
 class Board {
@@ -21,6 +21,7 @@ public:
 
 
     void attackMinion(int attackerId, int defenderId, bool friendly);
+    void damageMinion(int minionId, int damage, bool friendly);
 
     Minion getMinionById(int id, bool friendly);
 };

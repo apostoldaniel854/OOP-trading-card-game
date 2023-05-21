@@ -5,7 +5,6 @@
 
 Minion::Minion(std::string name, int health, int attack) : name(std::move(name)), health(health), attack(attack), alreadyAttacked(true) {}
 Minion::Minion() : name("Wisp"), health(1), attack(0), alreadyAttacked(true) {}
-Minion::Minion(const MinionCard& minionCard) : name(minionCard.getName()), health(minionCard.getHealth()), attack(minionCard.getAttack()), alreadyAttacked(true) {}
 
 int Minion::getAttack() const {
     return attack;
@@ -42,4 +41,6 @@ bool Minion::hasAlreadyAttacked() const {
 void Minion::setAlreadyAttacked(bool _alreadyAttacked) {
     alreadyAttacked = _alreadyAttacked;
 }
-
+void Minion::damageMinion(int damage) {
+    health -= damage;
+}

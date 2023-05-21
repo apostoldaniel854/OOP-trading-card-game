@@ -10,10 +10,10 @@
 - [X] lista de smart pointeri la catalog de carti pentru deck si hand
 
 ## Fixes
-- [ ] modificat catch try (acum nu pun in interiorul functiei) + exceptii proprii (poate .at folosit de asemenea?) - probabil scapat de comparatia cu nullpointer (in loc sa returnez nullptr, dau throw)
+- [X] modificat catch try (acum nu pun in interiorul functiei) + exceptii proprii (poate .at folosit de asemenea?) - probabil scapat de comparatia cu nullpointer (in loc sa returnez nullptr, dau throw)
 - [X] pus exemplu random de date de intrare
 - [X] sa se fac copieri corecte: apelat clone în cc, de făcut cu copy&swap în op=
-- [ ] schimbat dynamic_cast cu functii virtuale si gandit la un dynamic cast cu sens (la card)
+- [X] schimbat dynamic_cast cu functii virtuale si gandit la un dynamic cast cu sens (la card)
 - [X] schimbat dynamic_cast si functii virtuale la player
 - [X] rezolvat problema cu atacul (trebuie)
 - [X] mai multe tipuri de carti

@@ -87,3 +87,19 @@ Minion Board::getMinionById(int id, bool friendly) {
         return enemyMinions[id];
     }
 }
+
+void Board::damageMinion(int minionId, int damage, bool friendly) {
+    if (friendly) {
+        if (minionId < 0 || minionId >= (int) friendlyMinions.size())
+            throw InvalidMinion(minionId);
+        friendlyMinions[minionId].damageMinion(damage);
+        if (friendlyMinions[minionId].isDead())
+            friendlyMinions.erase(friendlyMinions.begin() + minionId);
+    } else {
+        if (minionId < 0 || minionId >= (int) enemyMinions.size())
+            throw InvalidMinion(minionId);
+        enemyMinions[minionId].damageMinion(damage);
+        if (enemyMinions[minionId].isDead())
+            enemyMinions.erase(enemyMinions.begin() + minionId);
+    }
+}

@@ -11,3 +11,7 @@ int SecretCard::getDuration() const {
 std::shared_ptr<Card> SecretCard::clone() const {
     return std::make_shared<SecretCard>(name, manaCost, type, duration);
 }
+
+bool SecretCard::playCard(Board &board, bool friendly) {
+    return true;
+}

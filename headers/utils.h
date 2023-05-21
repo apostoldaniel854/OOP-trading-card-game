@@ -23,6 +23,8 @@ static const int SPELL_CARD = 1;
 static const int SECRET_CARD = 2;
 static const int SPECIAL_CARD = 3;
 
+static const int OPPONENT_TARGET = 0;
+
 
 int getRandomInteger(int leftBound, int rightBound);
 void delay(double seconds);

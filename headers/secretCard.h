@@ -11,6 +11,7 @@ public:
     [[nodiscard]] int getDuration() const;
     /// clone
     [[nodiscard]] std::shared_ptr<Card> clone() const override;
+    bool playCard(Board& board, bool friendly) override;
 
 };
 

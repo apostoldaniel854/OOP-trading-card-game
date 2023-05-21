@@ -2,7 +2,7 @@
 #include "../headers/exceptions/invalidCard.h"
 #include "../headers/exceptions/invalidMinion.h"
 
-HumanPlayer::HumanPlayer(std::string  name, bool friendly, int health, const Deck& deck) : Player(std::move(name), friendly, health, std::move(deck)) {}
+HumanPlayer::HumanPlayer(std::string  name, bool friendly, int health, const Deck& deck) : Player(std::move(name), friendly, health, deck) {}
 
 void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>& opponent) {
     startTurn(turn, board);
@@ -15,22 +15,10 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
                 std::string cardName;
                 std::cin >> cardName;
                 std::shared_ptr<Card> card = getHand().playCard(cardName, getMana());
-                if (card->getType() == MINION_CARD) {
-                    /// dynamic cast for minion
-                    auto minionCard = std::dynamic_pointer_cast<MinionCard>(card);
-                    if (minionCard == nullptr) {
-                        throw std::runtime_error(
-                                "An error occurred while turning a card to a minion. Contact the developer to let them know about this bug\n");
-                    }
-                    board.addMinionToBoard(Minion(*minionCard), getFriendly());
-                }
-                else {
+                bool notDone = card->playCard(board, getFriendly());
+                if (notDone) {
                     /// dynamic cast for spell
                     auto spellCard = std::dynamic_pointer_cast<SpellCard>(card);
-                    if (spellCard == nullptr) {
-                        throw std::runtime_error(
-                                "An error occurred while turning a card to a spell. Contact the developer to let them know about this bug\n");
-                    }
                     opponent->takeDamage(spellCard->getDamage());
                 }
             }
@@ -41,7 +29,7 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
         } else if (command == "attack") {
             try {
                 int attackerId, defenderId;
-                std::cin >> attackerId >> defenderId;
+                std::cin >> attackerId >> defenderId; attackerId--; defenderId--;
                 board.attackMinion(attackerId, defenderId, getFriendly());
             }
             catch (InvalidMinion& e) {
@@ -51,7 +39,7 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
         else if (command == "go_face") {
             try {
                 int attackerId;
-                std::cin >> attackerId;
+                std::cin >> attackerId; attackerId--;
                 Minion minion = board.getMinionById(attackerId, getFriendly());
                 if (minion.hasAlreadyAttacked()) {
                     std::cout << "This minion cannot attack this turn\n";

@@ -10,9 +10,8 @@ public:
     ~MinionCard() override = default;
     /// clone
     [[nodiscard]] std::shared_ptr<Card> clone() const override;
-    /// getter
-    [[nodiscard]] int getHealth() const;
-    [[nodiscard]] int getAttack() const;
+
+    bool playCard(Board& board, bool friendly) override;
 };
 
 static const std::vector <MinionCard> minionCardsCatalog = {

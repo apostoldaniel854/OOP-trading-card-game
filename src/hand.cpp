@@ -1,4 +1,5 @@
 #include "../headers/hand.h"
+#include "../headers/minionCard.h"
 #include "../headers/exceptions/invalidCard.h"
 #include <iostream>
 
