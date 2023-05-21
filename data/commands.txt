@@ -1,0 +1,11 @@
+FULL LIST OF COMMANDS:
+help - show this message
+quit - quit the game
+end_turn - end your turn
+show_board - show the board
+show_hand - show your hand
+show_opponent - show opponent's health
+show_player - show your health
+play <card_name> - play a card from your hand
+attack <attacker_id> <defender_id> - attack with a minion
+go_face <attacker_id> - attack the opponent with a minion

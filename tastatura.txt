@@ -1,4 +1,6 @@
 2
+Daniel
+Andrei
 show_board
 show_hand
 play Orc
@@ -17,4 +19,5 @@ go_face 0
 go_face 1
 ComandaInvalidaPentruverificare
 play CarteInvalidaPentruVerificare
+help
 quit

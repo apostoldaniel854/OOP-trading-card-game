@@ -21,10 +21,10 @@ void ComputerPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Play
         }
     }
     catch (InvalidCard& e) {
-        std::cout << e.what();
+        std::cout << e.what() << "\n";
     }
     catch (InvalidMinion& e) {
-        std::cout << e.what();
+        std::cout << e.what() << "\n";
     }
     if (isGameOver(opponent))
         return;
