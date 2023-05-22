@@ -46,10 +46,13 @@ void Deck::deepCopy(const Deck& deck) {
 
 std::vector <std::shared_ptr <Card>> Deck::readCatalog() {
     std::ifstream catalogFile("../data/catalog.txt");
-    std::string name; int manaCost; std::string type;
     std::vector <std::shared_ptr <Card>> catalog;
+    int noOfCards;
+    catalogFile >> noOfCards;
 
-    while (catalogFile >> name >> manaCost >> type) {
+    for (int i = 0; i < noOfCards; i++) {
+        std::string name; int manaCost; std::string type;
+        catalogFile >> name >> manaCost >> type;
         if (type == "MINION_CARD") {
             int health, attack;
             catalogFile >> health >> attack;
@@ -59,6 +62,9 @@ std::vector <std::shared_ptr <Card>> Deck::readCatalog() {
             int damage;
             catalogFile >> damage;
             catalog.push_back(std::make_shared<SpellCard>(name, manaCost, SPELL_CARD, damage));
+        }
+        else {
+            exit(1);
         }
     }
     catalogFile.close();

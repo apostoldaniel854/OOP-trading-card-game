@@ -14,7 +14,7 @@ go_face 1
 end_turn
 play Dragon
 go_face 1
-ComandaInvalidaPentruverificare
+ComandaInvalidaPentruVerificare
 play CarteInvalidaPentruVerificare
 help
 quit
