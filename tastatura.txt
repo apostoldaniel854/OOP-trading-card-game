@@ -9,13 +9,13 @@ end_turn
 show_opponent
 show_player
 show_board
-attack 0 0
-go_face 0
+attack 1 1
+go_face 1
 end_turn
 play Dragon
-go_face 0
 go_face 1
 ComandaInvalidaPentruverificare
 play CarteInvalidaPentruVerificare
 help
 quit
+
