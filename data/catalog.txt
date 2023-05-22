@@ -12,3 +12,5 @@ Fireblast 2 SPELL_CARD 3
 Arcane 0 SPELL_CARD 1
 Frostbolt 3 SPELL_CARD 4
 Lightning 5 SPELL_CARD 7
+
+

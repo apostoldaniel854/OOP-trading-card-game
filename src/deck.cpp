@@ -45,8 +45,7 @@ void Deck::deepCopy(const Deck& deck) {
 }
 
 std::vector <std::shared_ptr <Card>> Deck::readCatalog() {
-    std::ifstream catalogFile;
-    catalogFile.open("../data/catalog.txt");
+    std::ifstream catalogFile("../data/catalog.txt");
     std::string name; int manaCost; std::string type;
     std::vector <std::shared_ptr <Card>> catalog;
 

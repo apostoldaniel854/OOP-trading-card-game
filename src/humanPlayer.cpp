@@ -79,8 +79,7 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
 }
 
 void HumanPlayer::showCommands() {
-    std::ifstream commandsFile;
-    commandsFile.open("../data/commands.txt");
+    std::ifstream commandsFile("../data/commands.txt");
     std::cout << commandsFile.rdbuf();
     commandsFile.close();
     std::cout << "\n";
