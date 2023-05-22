@@ -50,18 +50,15 @@ std::vector <std::shared_ptr <Card>> Deck::readCatalog() {
     std::vector <std::shared_ptr <Card>> catalog;
 
     while (catalogFile >> name >> manaCost >> type) {
-        std::shared_ptr <Card> card;
         if (type == "MINION_CARD") {
             int health, attack;
             catalogFile >> health >> attack;
-            card = std::make_shared<MinionCard>(name, manaCost, MINION_CARD, health, attack);
-            catalog.push_back(card);
+            catalog.push_back(std::make_shared<MinionCard>(name, manaCost, MINION_CARD, health, attack));
         }
         else if (type == "SPELL_CARD") {
             int damage;
             catalogFile >> damage;
-            card = std::make_shared<SpellCard>(name, manaCost, SPELL_CARD, damage);
-            catalog.push_back(card);
+            catalog.push_back(std::make_shared<SpellCard>(name, manaCost, SPELL_CARD, damage));
         }
     }
     catalogFile.close();
