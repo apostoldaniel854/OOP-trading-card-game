@@ -64,7 +64,7 @@ std::vector <std::shared_ptr <Card>> Deck::readCatalog() {
             catalog.push_back(std::make_shared<SpellCard>(name, manaCost, SPELL_CARD, damage));
         }
         else {
-            exit(1);
+            exit(2);
         }
     }
     catalogFile.close();
