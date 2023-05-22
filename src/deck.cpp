@@ -1,5 +1,5 @@
 #include "../headers/deck.h"
-
+#include <assert.h>
 
 Deck::Deck(int numCards) {
     std::vector <std::shared_ptr <Card>> catalog = readCatalog();
@@ -60,6 +60,9 @@ std::vector <std::shared_ptr <Card>> Deck::readCatalog() {
             int damage;
             catalogFile >> damage;
             card = std::make_shared<SpellCard>(name, manaCost, SPELL_CARD, damage);
+        }
+        else {
+            assert(false);
         }
         catalog.push_back(card);
     }
