@@ -55,13 +55,14 @@ std::vector <std::shared_ptr <Card>> Deck::readCatalog() {
             int health, attack;
             catalogFile >> health >> attack;
             card = std::make_shared<MinionCard>(name, manaCost, MINION_CARD, health, attack);
+            catalog.push_back(card);
         }
         else if (type == "SPELL_CARD") {
             int damage;
             catalogFile >> damage;
             card = std::make_shared<SpellCard>(name, manaCost, SPELL_CARD, damage);
+            catalog.push_back(card);
         }
-        catalog.push_back(card);
     }
     catalogFile.close();
     return catalog;
