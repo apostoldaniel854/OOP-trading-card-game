@@ -34,8 +34,9 @@ Game::Game() : board() {
 
 Deck Game::readCatalog() {
     std::ifstream catalogFile("../data/catalog.txt");
-    int noOfCards;
+    int noOfCards = 0;
     catalogFile >> noOfCards;
+    std::cout << noOfCards << "\n";
     Deck temp;
     for (int i = 0; i < noOfCards; i++) {
         std::string name; int manaCost; std::string type;
