@@ -64,6 +64,7 @@ std::vector <std::shared_ptr <Card>> Deck::readCatalog() {
         else {
             exit(2);
         }
+        std::cerr << catalog.back() << std::endl;
     }
     catalogFile.close();
     return catalog;
