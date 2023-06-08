@@ -64,7 +64,6 @@ Deck Deck::readCatalog() {
             temp.cards.emplace_back(std::make_shared<SpellCard>(name, manaCost, SPELL_CARD, damage));
         }
         else {
-            exit(2);
         }
     }
     catalogFile.close();
