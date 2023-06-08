@@ -1,4 +1,4 @@
 2
-Daniel
-Andrei
+Player1
+Player2
 quit
