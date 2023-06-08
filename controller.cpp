@@ -1,10 +1,10 @@
 #include "headers/game.h"
 
 int main() {
-    std::string a = "aa";
+    std::string a = "Nu";
     std::cout << "Este o instanta umana?\n";
     std::cin >> a;
-    if (a == "aa")
+    if (a == "Nu")
         return 0;
     Game game;
 //    std::cout << game << "\n"; /// test required for hw 1
