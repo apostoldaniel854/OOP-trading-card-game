@@ -1,11 +1,9 @@
 #include "../headers/deck.h"
-#include <assert.h>
 
 Deck::Deck(int numCards) {
     std::vector <std::shared_ptr <Card>> catalog = readCatalog();
     for (int i = 0; i < numCards; i++) {
-        std::shared_ptr <Card> card = catalog[getRandomInteger(0, (int)catalog.size() - 1)];
-        cards.emplace_back(card);
+        cards.emplace_back(catalog[getRandomInteger(0, (int)catalog.size() - 1)]);
     }
 }
 
@@ -56,12 +54,12 @@ std::vector <std::shared_ptr <Card>> Deck::readCatalog() {
         if (type == "MINION_CARD") {
             int health, attack;
             catalogFile >> health >> attack;
-            catalog.push_back(std::make_shared<MinionCard>(name, manaCost, MINION_CARD, health, attack));
+            catalog.emplace_back(std::make_shared<MinionCard>(name, manaCost, MINION_CARD, health, attack));
         }
         else if (type == "SPELL_CARD") {
             int damage;
             catalogFile >> damage;
-            catalog.push_back(std::make_shared<SpellCard>(name, manaCost, SPELL_CARD, damage));
+            catalog.emplace_back(std::make_shared<SpellCard>(name, manaCost, SPELL_CARD, damage));
         }
         else {
             exit(2);
