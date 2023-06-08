@@ -8,6 +8,7 @@
 #include "player.h"
 #include "humanPlayer.h"
 #include "computerPlayer.h"
+#include "secretCard.h"
 #include "utils.h"
 #include <typeinfo>
 

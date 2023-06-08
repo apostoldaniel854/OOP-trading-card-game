@@ -1,4 +1,5 @@
 #include "../headers/game.h"
+
 //#include "../headers/secretCard.h"
 Game::Game() : board() {
     Deck catalog = readCatalog();
@@ -73,8 +74,9 @@ void Game::showState(int turn) {
 
 void Game::run() {
 //    std::cout << Deck(MAX_DECK_SIZE) << "\n"; /// test required for hw 1
-//    SecretCard secretCard("Secret", 0, SECRET_CARD, 2);
-//    std::cout << secretCard.getDuration() << "\n";
+    SecretCard secretCard("Block", 3, SPELL_CARD, 2);
+    std::cout << secretCard.getDuration() << "\n";
+    secretCard.playCard(board, IS_FRIENDLY);
     std::cout << "-------------NEW GAME---------------\n";
     int turn = 1;
     while (turn <= MAX_TURNS) {
