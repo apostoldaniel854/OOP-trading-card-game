@@ -1,9 +1,13 @@
 #include "../headers/deck.h"
 
 Deck::Deck(int numCards) {
+    static Deck catalog = readCatalog();
+    std::cout << catalog.cards.size() << "\n";
     for (int i = 0; i < numCards; i++) {
-        cards.emplace_back(catalog[getRandomInteger(0, (int)catalog.size() - 1)]);
+        std::cout << i << "\n";
+        cards.emplace_back(catalog.cards[getRandomInteger(0, (int)catalog.cards.size() - 1)]->clone());
     }
+    std::cout << "here\n";
 }
 
 std::shared_ptr<Card> Deck::drawCard() {
@@ -41,30 +45,28 @@ void Deck::deepCopy(const Deck& deck) {
     }
 }
 
-std::vector <std::shared_ptr <Card>> Deck::readCatalog() {
+Deck Deck::readCatalog() {
     std::ifstream catalogFile("../data/catalog.txt");
     int noOfCards;
     catalogFile >> noOfCards;
-    std::vector <std::shared_ptr <Card>> catalog;
+    Deck temp;
     for (int i = 0; i < noOfCards; i++) {
         std::string name; int manaCost; std::string type;
         catalogFile >> name >> manaCost >> type;
         if (type == "MINION_CARD") {
             int health, attack;
             catalogFile >> health >> attack;
-            catalog.emplace_back(std::make_shared<MinionCard>(name, manaCost, MINION_CARD, health, attack));
+            temp.cards.emplace_back(std::make_shared<MinionCard>(name, manaCost, MINION_CARD, health, attack));
         }
         else if (type == "SPELL_CARD") {
             int damage;
             catalogFile >> damage;
-            catalog.emplace_back(std::make_shared<SpellCard>(name, manaCost, SPELL_CARD, damage));
+            temp.cards.emplace_back(std::make_shared<SpellCard>(name, manaCost, SPELL_CARD, damage));
         }
         else {
             exit(2);
         }
     }
     catalogFile.close();
-    return catalog;
+    return temp;
 }
-
-std::vector <std::shared_ptr <Card>> Deck::catalog = readCatalog();

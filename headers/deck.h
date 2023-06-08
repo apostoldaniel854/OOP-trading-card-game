@@ -9,10 +9,10 @@
 class Deck {
 private:
     std::vector <std::shared_ptr<Card>> cards;
-    static std::vector <std::shared_ptr <Card>> catalog;
 public:
     explicit Deck(int numCards);
-    static std::vector <std::shared_ptr <Card>> readCatalog();
+    Deck() = default;
+    static Deck readCatalog();
     std::shared_ptr<Card> drawCard();
     /// assignment operator =
     Deck& operator = (const Deck& deck);
