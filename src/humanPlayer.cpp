@@ -14,7 +14,7 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
             try {
                 std::string cardName;
                 std::cin >> cardName;
-                std::shared_ptr<Card> card = getHand().playCard(cardName, getMana());
+                std::shared_ptr<Card> card = hand.playCard(cardName, getMana());
                 bool notDone = card->playCard(board, getFriendly());
                 if (notDone) {
                     auto spellCard = std::dynamic_pointer_cast<SpellCard>(card);
@@ -79,7 +79,7 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
 }
 
 void HumanPlayer::showCommands() {
-    std::ifstream commandsFile("../data/commands.txt");
+    std::ifstream commandsFile("./data/commands.txt");
     std::cout << commandsFile.rdbuf();
     commandsFile.close();
     std::cout << "\n";

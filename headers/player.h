@@ -30,9 +30,9 @@ public:
     void startTurn(int turn, Board& board);
     void takeDamage(int damage);
     static bool isGameOver(const std::shared_ptr<Player>& player);
-    Hand & getHand();
 
     int &getMana();
+    [[nodiscard]] const Hand &getHand() const;
 
     virtual ~Player() = default;
 };

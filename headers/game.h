@@ -16,8 +16,11 @@ private:
     Board board;
     std::shared_ptr<Player> player1, player2;
     void showState(int turn);
-public:
     Game();
+public:
+    Game(const Game& game) = delete;
+    Game& operator = (const Game& game) = delete;
+    static Game& getInstance();
 
     friend std::ostream& operator << (std::ostream& out, const Game& game);
 

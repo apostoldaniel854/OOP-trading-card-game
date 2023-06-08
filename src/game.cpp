@@ -32,6 +32,11 @@ Game::Game() : board() {
     }
 }
 
+Game& Game::getInstance() {
+    static Game instance;
+    return instance;
+}
+
 Deck Game::readCatalog() {
     std::ifstream catalogFile("./data/catalog.txt");
     int noOfCards;

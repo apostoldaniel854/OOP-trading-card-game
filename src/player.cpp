@@ -59,9 +59,6 @@ int Player::getHealth() const {
 void Player::takeDamage(int damage) {
     health -= damage;
 }
-Hand & Player::getHand() {
-    return this->hand;
-}
 
 int &Player::getMana() {
     return this->mana;
@@ -69,6 +66,10 @@ int &Player::getMana() {
 
 bool Player::isGameOver(const std::shared_ptr<Player>& opponent) {
     return opponent->getHealth() <= 0;
+}
+
+const Hand &Player::getHand() const {
+    return this->hand;
 }
 
 
