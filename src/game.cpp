@@ -1,6 +1,7 @@
 #include "../headers/game.h"
 //#include "../headers/secretCard.h"
 Game::Game() : board() {
+    Deck catalog = readCatalog();
     std::cout << "CHOOSE GAME TYPE:\n";
     std::cout << "1. Player vs Player\n";
     std::cout << "2. Player vs AI\n";
@@ -18,18 +19,44 @@ Game::Game() : board() {
     std::string name2;
     std::cin >> name2;
     if (choice == 1) {
-        player1 = std::make_shared<HumanPlayer>(name1, IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
-        player2 = std::make_shared<HumanPlayer>(name2, IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
+        player1 = std::make_shared<HumanPlayer>(name1, IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE, catalog));
+        player2 = std::make_shared<HumanPlayer>(name2, IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE, catalog));
     }
     else if (choice == 2) {
-        player1 = std::make_shared<HumanPlayer>(name1, IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
-        player2 = std::make_shared<ComputerPlayer>(name2, IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
+        player1 = std::make_shared<HumanPlayer>(name1, IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE, catalog));
+        player2 = std::make_shared<ComputerPlayer>(name2, IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE, catalog));
     }
     else {
-        player1 = std::make_shared<ComputerPlayer>(name1, IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
-        player2 = std::make_shared<ComputerPlayer>(name2, IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE));
+        player1 = std::make_shared<ComputerPlayer>(name1, IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE, catalog));
+        player2 = std::make_shared<ComputerPlayer>(name2, IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE, catalog));
     }
 }
+
+Deck Game::readCatalog() {
+    std::ifstream catalogFile("../data/catalog.txt");
+    int noOfCards;
+    catalogFile >> noOfCards;
+    Deck temp;
+    for (int i = 0; i < noOfCards; i++) {
+        std::string name; int manaCost; std::string type;
+        catalogFile >> name >> manaCost >> type;
+        if (type == "MINION_CARD") {
+            int health, attack;
+            catalogFile >> health >> attack;
+            temp.addCard(std::make_shared<MinionCard>(name, manaCost, MINION_CARD, health, attack));
+        }
+        else if (type == "SPELL_CARD") {
+            int damage;
+            catalogFile >> damage;
+            temp.addCard(std::make_shared<SpellCard>(name, manaCost, SPELL_CARD, damage));
+        }
+        else {
+        }
+    }
+    catalogFile.close();
+    return temp;
+}
+
 
 void Game::showState(int turn) {
     std::cout << "-------------" << "TURN " << turn << "-----------------\n";
@@ -40,7 +67,7 @@ void Game::showState(int turn) {
 }
 
 void Game::run() {
-    std::cout << Deck(MAX_DECK_SIZE) << "\n"; /// test required for hw 1
+//    std::cout << Deck(MAX_DECK_SIZE) << "\n"; /// test required for hw 1
 //    SecretCard secretCard("Secret", 0, SECRET_CARD, 2);
 //    std::cout << secretCard.getDuration() << "\n";
     std::cout << "-------------NEW GAME---------------\n";

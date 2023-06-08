@@ -30,5 +30,6 @@ public:
     static void showLose();
 
     static void showWin();
+    static Deck readCatalog();
 
 };
