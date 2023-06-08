@@ -3,6 +3,8 @@
 #include "../headers/exceptions/invalidCard.h"
 
 #include <utility>
+#include <memory>
+
 
 ComputerPlayer::ComputerPlayer(std::string  name, bool friendly, int health, const Deck& deck) : Player(std::move(name), friendly, health, deck) {}
 
@@ -30,3 +32,5 @@ void ComputerPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Play
         return;
     endTurn();
 }
+
+

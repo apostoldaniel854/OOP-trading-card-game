@@ -11,7 +11,7 @@ private:
     std::vector <std::shared_ptr<Card>> cards;
 public:
     explicit Deck(int numCards);
-    static std::vector <std::shared_ptr<Card>> readCatalog();
+    static void readCatalog(std::vector <std::shared_ptr<Card>>& catalog);
     std::shared_ptr<Card> drawCard();
     /// assignment operator =
     Deck& operator = (const Deck& deck);

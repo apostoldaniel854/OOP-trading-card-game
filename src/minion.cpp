@@ -19,8 +19,6 @@ std::ostream& operator << (std::ostream& out, const Minion& minion) {
     return out;
 }
 
-Minion::Minion(const std::string& name)  : Minion(minionsCatalog.find(name)->second) {}
-
 void Minion::attackMinion(Minion &minion) {
     minion.health -= this->attack;
     this->health -= minion.attack;

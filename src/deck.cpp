@@ -1,7 +1,8 @@
 #include "../headers/deck.h"
 
 Deck::Deck(int numCards) {
-    std::vector <std::shared_ptr <Card>> catalog = readCatalog();
+    static std::vector <std::shared_ptr <Card>> catalog;
+    readCatalog(catalog);
     for (int i = 0; i < numCards; i++) {
         cards.emplace_back(catalog[getRandomInteger(0, (int)catalog.size() - 1)]);
     }
@@ -42,9 +43,8 @@ void Deck::deepCopy(const Deck& deck) {
     }
 }
 
-std::vector <std::shared_ptr <Card>> Deck::readCatalog() {
+void Deck::readCatalog(std::vector <std::shared_ptr <Card>>& catalog) {
     std::ifstream catalogFile("../data/catalog.txt");
-    std::vector <std::shared_ptr <Card>> catalog;
     int noOfCards;
     catalogFile >> noOfCards;
 
@@ -64,8 +64,6 @@ std::vector <std::shared_ptr <Card>> Deck::readCatalog() {
         else {
             exit(2);
         }
-        std::cerr << catalog.back() << std::endl;
     }
     catalogFile.close();
-    return catalog;
 }

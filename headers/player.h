@@ -7,7 +7,7 @@
 #include "utils.h"
 
 class Player {
-private:
+protected:
     std::string name;
     bool friendly;
     int mana;
