@@ -17,7 +17,6 @@ std::ostream &operator<<(std::ostream &out, const Player &player) {
 }
 
 void Player::endTurn() {
-    static auto fatigueDamage = 0;
     std::shared_ptr<Card> drawnCard = deck.drawCard();
     if (drawnCard->getType() == SPECIAL_CARD) {
         fatigueDamage++;

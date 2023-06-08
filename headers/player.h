@@ -14,6 +14,7 @@ protected:
     int health;
     Hand hand;
     Deck deck;
+    int fatigueDamage = 0;
 public:
     Player(std::string  name, bool friendly, int health, Deck deck);
     friend std::ostream &operator<<(std::ostream &out, const Player &player);
