@@ -41,4 +41,5 @@ void Minion::setAlreadyAttacked(bool _alreadyAttacked) {
 }
 void Minion::damageMinion(int damage) {
     health -= damage;
+    std::cout << "Minion " << name << " took " << damage << " damage\n";
 }

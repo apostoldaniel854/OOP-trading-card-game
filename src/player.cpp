@@ -57,6 +57,7 @@ int Player::getHealth() const {
 
 void Player::takeDamage(int damage) {
     health -= damage;
+    std::cout << this->name << " took " << damage << " damage!\n";
 }
 
 int &Player::getMana() {

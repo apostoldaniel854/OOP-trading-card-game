@@ -33,6 +33,23 @@ void ComputerPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Play
     }
     if (isGameOver(opponent))
         return;
+    std::vector <Minion> myMinions;
+    if (friendly) {
+        myMinions = board.getFriendlyMinions();
+    }
+    else {
+        myMinions = board.getEnemyMinions();
+    }
+    for (const Minion& minion : myMinions) {
+        if (minion.hasAlreadyAttacked())
+            continue;
+        if (minion.getAttack() == 0)
+            continue;
+        int damage = minion.getAttack();
+        opponent->takeDamage(damage);
+        if (isGameOver(opponent))
+            return;
+    }
     endTurn();
 }
 

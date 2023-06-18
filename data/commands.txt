@@ -7,5 +7,5 @@ show_hand - show your hand
 show_opponent - show opponent's health
 show_player - show your health
 play <card_name> - play a card from your hand
-attack <attacker_id> <defender_id> - attack with a minion
-go_face <attacker_id> - attack the opponent with a minion
+attack <attacker_id> <defender_id> - attack with a minion (the indexation starts from 1)
+go_face <attacker_id> - attack the opponent with a minion (the indexation starts from 1)

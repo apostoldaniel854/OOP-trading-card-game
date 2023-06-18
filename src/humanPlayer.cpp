@@ -4,6 +4,17 @@
 
 HumanPlayer::HumanPlayer(std::string  name, bool friendly, int health, const Deck& deck) : Player(std::move(name), friendly, health, deck) {}
 
+bool HumanPlayer::isNumber(const std::string& str) {
+    if (isdigit(str[0]) && str[0] != '0') {
+        if ((int)str.size() > 6)
+            return false;
+        if (std::ranges::all_of(str, [](char i) { return isdigit(i); }))
+            return true;
+        return false;
+    }
+    return false;
+}
+
 void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>& opponent) {
     startTurn(turn, board);
     while (true) {
@@ -27,8 +38,14 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
 
         } else if (command == "attack") {
             try {
-                int attackerId, defenderId;
-                std::cin >> attackerId >> defenderId; attackerId--; defenderId--;
+                std::string strAttacker, strDefender;
+                std::cin >> strAttacker >> strDefender;
+                if (not isNumber(strAttacker) or not isNumber(strDefender)) {
+                    std::cout << "Invalid command. You can type help for a full list of commands\n";
+                    continue;
+                }
+                int attackerId = stoi(strAttacker), defenderId = stoi(strDefender);
+                attackerId--; defenderId--;
                 board.attackMinion(attackerId, defenderId, getFriendly());
             }
             catch (InvalidMinion& e) {
@@ -37,8 +54,14 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
         }
         else if (command == "go_face") {
             try {
-                int attackerId;
-                std::cin >> attackerId; attackerId--;
+                std::string strAttacker;
+                std::cin >> strAttacker;
+                if (not isNumber(strAttacker)) {
+                    std::cout << "Invalid command. You can type help for a full list of commands\n";
+                    continue;
+                }
+                int attackerId = stoi(strAttacker);
+                attackerId--;
                 Minion minion = board.getMinionById(attackerId, getFriendly());
                 if (minion.hasAlreadyAttacked()) {
                     std::cout << "This minion cannot attack this turn\n";
