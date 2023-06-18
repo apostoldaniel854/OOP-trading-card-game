@@ -8,9 +8,10 @@ bool HumanPlayer::isNumber(const std::string& str) {
     if (isdigit(str[0]) && str[0] != '0') {
         if ((int)str.size() > 6)
             return false;
-        if (std::ranges::all_of(str, [](char i) { return isdigit(i); }))
-            return true;
-        return false;
+        for (int i = 1; i < (int)str.size(); i++)
+            if (!isdigit(str[i]))
+                return false;
+        return true;
     }
     return false;
 }
