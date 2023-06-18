@@ -132,13 +132,15 @@ bool Game::isGameOver() {
 
 void Game::showDraw() {
     std::cout << "---------GAME ENDED IN A DRAW--------\n";
-
+    delay(3);
 }
 
 void Game::showLose() {
     std::cout << "-----YOU WERE KILLED - YOU LOSE------\n";
+    delay(3);
 }
 
 void Game::showWin() {
     std::cout << "-YOU KILLED THE ENEMY HERO - YOU WIN-\n";
+    delay(3);
 }
