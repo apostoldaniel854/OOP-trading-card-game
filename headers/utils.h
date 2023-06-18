@@ -28,12 +28,3 @@ static const int OPPONENT_TARGET = 0;
 int getRandomInteger(int leftBound, int rightBound);
 void delay(double seconds);
 
-template <typename T, typename Func>
-auto myFilter(const std::vector<T>& vec, Func check) {
-    std::vector<T> out;
-    for (auto&& elem : vec)
-        if (check(elem))
-            out.push_back(elem);
-    return out;
-}
-
