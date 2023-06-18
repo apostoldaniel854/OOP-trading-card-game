@@ -1,5 +1,7 @@
 ## PROIECT OOP
 
+Pentru o reprezentare a progresului la proiect se poate accesa [TODO](TODO.md).
+
 ## Descriere
 Joc video de tip trading card game inspirat din [Hearthstone](https://en.wikipedia.org/wiki/Hearthstone) si [Gwent](https://en.wikipedia.org/wiki/Gwent:_The_Witcher_Card_Game). 
 
@@ -9,14 +11,13 @@ La inceputul fiecarei ture, mana se regenereaza si se mai adauga 1 mana daca man
 
 Minionii pot fi jucati pe tabla (board) si incepand cu urmatoarea runda pot ataca minionii inamici sau pe opponent si dau damage egal cu atacul lor (daca ataca un alt minion vor pierde din viata o valoare egala cu atacul acelui minion atacat). 
 
-Vor exista si spell-uri in versiuni urmatoare. 
-
+Exista spell-uri care dau damage direct la opponent sau minionilor inamici.
 Jucatorul al carui viata devine negativa sau egala cu 0, pierde. 
 
 ## Detalii tehnice
 
 Entrypoint-ul este fisierul controller.cpp.
-Jocul este text-based in terminal (versiuni urmatoare vor folosi [Indicators](https://github.com/p-ranav/indicators) pentru a infrumuseta interfata).
+Jocul este text-based in terminal (e posibil ca versiuni urmatoarea sa foloseasca [Indicators](https://github.com/p-ranav/indicators) pentru a infrumuseta interfata).
 
 ## Documentatie
 

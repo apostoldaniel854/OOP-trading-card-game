@@ -28,6 +28,9 @@ void ComputerPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Play
     catch (InvalidMinion& e) {
         std::cout << e.what() << "\n";
     }
+    catch (std::runtime_error& e) {
+        std::cout << e.what() << "\n";
+    }
     if (isGameOver(opponent))
         return;
     endTurn();

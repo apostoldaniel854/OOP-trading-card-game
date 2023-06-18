@@ -1,6 +1,6 @@
 #include "../headers/game.h"
 
-//#include "../headers/secretCard.h"
+
 Game::Game() : board() {
     Deck catalog = readCatalog();
     std::cout << "CHOOSE GAME TYPE:\n";
@@ -74,7 +74,7 @@ void Game::showState(int turn) {
 
 void Game::run() {
     SecretCard secretCard("Block", 3, SPELL_CARD, 2);
-    std::cout << secretCard.getDuration() << "\n";
+    std::cout << secretCard.getDuration() << "\n"; /// test for hw 2
     secretCard.playCard(board, IS_FRIENDLY);
     std::cout << "-------------NEW GAME---------------\n";
     int turn = 1;
