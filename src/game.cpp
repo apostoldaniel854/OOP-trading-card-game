@@ -73,7 +73,6 @@ void Game::showState(int turn) {
 }
 
 void Game::run() {
-//    std::cout << Deck(MAX_DECK_SIZE) << "\n"; /// test required for hw 1
     SecretCard secretCard("Block", 3, SPELL_CARD, 2);
     std::cout << secretCard.getDuration() << "\n";
     secretCard.playCard(board, IS_FRIENDLY);

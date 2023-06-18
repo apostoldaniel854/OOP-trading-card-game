@@ -29,8 +29,11 @@ Jocul este text-based in terminal (versiuni urmatoare vor folosi [Indicators](ht
 - `show_opponent` - afiseaza viata adversarului
 - `show_player` - afiseaza viata ta
 - `play <card_name>` - joaca o carte din mana
-- `attack <friendlyMinion_id> <enemyMinion_id>` - ataca cu un minion de pe tabla
-- `go_face <friendlyMinion_id> opponent` - ataca adversarul cu un minion de pe tabla
+- `attack <friendlyMinion_id> <enemyMinion_id>` - ataca cu un minion de pe tabla (indexarea se face de la 1)
+- `go_face <friendlyMinion_id> opponent` - ataca adversarul cu un minion de pe tabla (indexarea se face de la 1)
 ## Inspiratie
 - https://github.com/An0n1mity/Hearthstone-Battleground-Clone
 - https://github.com/Rymedy/hearthstone-web
+## Folosit pentru ajutor
+- https://stackoverflow.com/questions/21204676/modern-way-to-filter-stl-container
+- https://www.cppstories.com/2021/filter-cpp-containers/

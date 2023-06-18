@@ -2,7 +2,10 @@
 
 Deck::Deck(int numCards, const Deck& catalog) {
     for (int i = 0; i < numCards; i++) {
-        cards.emplace_back(catalog.cards[getRandomInteger(0, (int)catalog.cards.size() - 1)]->clone());
+        if (getRandomInteger(0, 2) == 0)
+            cards.emplace_back(CardFactory::createSpellCard(catalog.cards));
+        else
+           cards.emplace_back(CardFactory::createMinionCard(catalog.cards));
     }
 }
 

@@ -3,6 +3,7 @@
 #include "card.h"
 #include "minionCard.h"
 #include "spellCard.h"
+#include "cardFactory.h"
 #include <vector>
 #include <memory>
 #include <fstream>

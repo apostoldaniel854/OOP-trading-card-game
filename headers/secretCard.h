@@ -14,9 +14,3 @@ public:
     bool playCard(Board& board, bool friendly) override;
 
 };
-
-static const std::vector <SecretCard> secretCardsCatalog = {
-        SecretCard("Shield", 9, SPELL_CARD, 6),
-        SecretCard("Regenerate", 6, SPELL_CARD, 4),
-        SecretCard("Block", 3, SPELL_CARD, 2)
-};
