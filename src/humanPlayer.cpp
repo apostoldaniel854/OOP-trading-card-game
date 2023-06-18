@@ -63,6 +63,8 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
         } else if (command == "show_player") {
             std::cout << "Your health: ";
             std::cout << getHealth() << "\n";
+            std::cout << "Your mana: ";
+            std::cout << getMana() << "\n";
         } else if (command == "show_opponent") {
             std::cout << "Enemy health: ";
             std::cout << opponent->getHealth() << "\n";
