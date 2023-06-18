@@ -4,9 +4,10 @@
 
 class SpellCard : public Card {
 private:
-    int damage;
+    int damage{};
 public:
     SpellCard(std::string  name, int manaCost, int type, int damage);
+    SpellCard() = default;
     ///getter
     [[nodiscard]] int getDamage() const;
     /// clone

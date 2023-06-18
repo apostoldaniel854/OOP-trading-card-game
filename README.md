@@ -37,3 +37,4 @@ Jocul este text-based in terminal (versiuni urmatoare vor folosi [Indicators](ht
 ## Folosit pentru ajutor
 - https://stackoverflow.com/questions/21204676/modern-way-to-filter-stl-container
 - https://www.cppstories.com/2021/filter-cpp-containers/
+- https://github.com/mcmarius/poo/tree/master/tema-3

@@ -1,30 +1,43 @@
 #include "../headers/cardFactory.h"
 #include <functional>
+#include "../headers/cardPool.h"
 
 template <typename T>
-std::vector <T> CardFactory::myFilter(const std::vector<T>& vec, std::function<bool(const T&)> check) {
-    std::vector<T> out;
+std::vector <std::shared_ptr<T>> CardFactory::myFilter(const std::vector<std::shared_ptr <Card>>& vec, const std::function<bool(const std::shared_ptr <Card>&)>& check) {
+    std::vector<std::shared_ptr<T>> out;
     for (auto&& elem : vec)
-        if (check(elem))
-            out.push_back(elem);
+        if (check(elem)) {
+            /// dynamic cast from Card to T
+            std::shared_ptr <T> castedElem = std::dynamic_pointer_cast<T>(elem);
+            out.push_back(castedElem);
+        }
     return out;
 }
 
 template
-std::vector<std::shared_ptr<Card>> CardFactory::myFilter(const std::vector<std::shared_ptr<Card>>& vec, std::function<bool(const std::shared_ptr<Card>&)> check);
+std::vector<std::shared_ptr<MinionCard>> CardFactory::myFilter(const std::vector<std::shared_ptr<Card>>& vec, const std::function<bool(const std::shared_ptr<Card>&)>& check);
+
+template
+std::vector<std::shared_ptr<SpellCard>> CardFactory::myFilter(const std::vector<std::shared_ptr<Card>>& vec, const std::function<bool(const std::shared_ptr<Card>&)>& check);
 
 
 
 std::shared_ptr<Card> CardFactory::createMinionCard(const std::vector<std::shared_ptr<Card>>& catalog) {
-    static std::vector <std::shared_ptr<Card>> minionCatalog = myFilter<std::shared_ptr<Card>>(catalog, [](const std::shared_ptr<Card>& card) {
+    static std::vector <std::shared_ptr<MinionCard>> minionCatalog = myFilter<MinionCard>(catalog, [](const std::shared_ptr<Card>& card) {
         return card->getType() == MINION_CARD;
     });
-    return minionCatalog[getRandomInteger(0, (int)minionCatalog.size() - 1)]->clone();
+    static CardPool<MinionCard, 2 * MAX_MINION_CARDS> pool;
+    auto card = pool.getConn();
+    card = minionCatalog[getRandomInteger(0, (int)minionCatalog.size() - 1)];
+    return card;
 }
 
 std::shared_ptr<Card> CardFactory::createSpellCard(const std::vector<std::shared_ptr<Card>>& catalog) {
-    static std::vector <std::shared_ptr<Card>> spellCatalog = myFilter<std::shared_ptr<Card>>(catalog, [](const std::shared_ptr<Card>& card) {
+    static std::vector <std::shared_ptr<SpellCard>> spellCatalog = myFilter<SpellCard>(catalog, [](const std::shared_ptr<Card>& card) {
         return card->getType() == SPELL_CARD;
     });
-    return spellCatalog[getRandomInteger(0, (int)spellCatalog.size() - 1)]->clone();
+    static CardPool<SpellCard, 2 * MAX_SPELL_CARDS> pool;
+    auto card = pool.getConn();
+    card = spellCatalog[getRandomInteger(0, (int)spellCatalog.size() - 1)];
+    return card;
 }

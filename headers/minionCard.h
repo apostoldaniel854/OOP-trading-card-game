@@ -3,10 +3,11 @@
 
 class MinionCard : public Card {
 private:
-    int health;
-    int attack;
+    int health{};
+    int attack{};
 public:
     MinionCard(std::string  name, int manaCost, int type, int health, int attack);
+    MinionCard() = default;
     ~MinionCard() override = default;
     /// clone
     [[nodiscard]] std::shared_ptr<Card> clone() const override;

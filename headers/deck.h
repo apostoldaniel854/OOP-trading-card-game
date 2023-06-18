@@ -1,5 +1,6 @@
 #pragma once
 #include "hand.h"
+#include <random>
 #include "card.h"
 #include "minionCard.h"
 #include "spellCard.h"
@@ -7,6 +8,7 @@
 #include <vector>
 #include <memory>
 #include <fstream>
+
 class Deck {
 private:
     std::vector <std::shared_ptr<Card>> cards;

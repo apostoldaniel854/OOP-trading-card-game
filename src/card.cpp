@@ -21,3 +21,5 @@ std::ostream& operator << (std::ostream& out, const Card& card) {
     out << "Mana cost: " << card.getManaCost() << "\n";
     return out;
 }
+
+Card::~Card() { close(); }

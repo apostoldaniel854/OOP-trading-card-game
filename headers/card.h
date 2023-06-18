@@ -6,6 +6,8 @@
 #include "board.h"
 
 class Card {
+private:
+    bool opened = false;
 protected:
     std::string name;
     int manaCost;
@@ -19,7 +21,10 @@ public:
     virtual bool playCard(Board& board, bool friendly) = 0;
     [[nodiscard]] virtual std::shared_ptr<Card> clone() const = 0;
     friend std::ostream& operator << (std::ostream& out, const Card& card);
-    virtual ~Card() = default;
+    virtual ~Card();
+    void open() { opened = true; }
+    [[nodiscard]] bool free() const { return !opened; }
+    void close() { opened = false; }
 };
 
 

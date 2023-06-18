@@ -20,10 +20,12 @@ static const bool IS_NOT_FRIENDLY = false;
 
 static const int MINION_CARD = 0;
 static const int SPELL_CARD = 1;
-static const int SECRET_CARD = 2;
+[[maybe_unused]] static const int SECRET_CARD = 2;
 static const int SPECIAL_CARD = 3;
 
 static const int OPPONENT_TARGET = 0;
+static const int MAX_MINION_CARDS = 20;
+static const int MAX_SPELL_CARDS = 10;
 
 int getRandomInteger(int leftBound, int rightBound);
 void delay(double seconds);

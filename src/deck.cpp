@@ -1,11 +1,16 @@
 #include "../headers/deck.h"
 
 Deck::Deck(int numCards, const Deck& catalog) {
-    for (int i = 0; i < numCards; i++) {
-        if (getRandomInteger(0, 2) == 0)
+    try {
+        for (int i = 0; i < std::min(MAX_MINION_CARDS, numCards); i++)
+            cards.emplace_back(CardFactory::createMinionCard(catalog.cards));
+        for (int i = 0; i < std::min(MAX_SPELL_CARDS, numCards - MAX_MINION_CARDS); i++)
             cards.emplace_back(CardFactory::createSpellCard(catalog.cards));
-        else
-           cards.emplace_back(CardFactory::createMinionCard(catalog.cards));
+        /// random shuffle cards
+        std::shuffle(cards.begin(), cards.end(), std::mt19937(std::random_device()()));
+    }
+    catch (const std::exception &e) {
+        std::cerr << e.what() << std::endl;
     }
 }
 

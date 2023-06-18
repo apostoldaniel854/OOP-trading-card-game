@@ -46,11 +46,11 @@
 ## Tema 3
 
 #### Cerințe
-- [ ] 2 șabloane de proiectare (design patterns)
-- [ ] o funcție șablon (template) cu sens; minim 2 instanțieri
-- [ ] o clasă șablon cu sens; minim 2 instanțieri
+- [X] 2 șabloane de proiectare (design patterns) -> done: Singleton, Factory, Object Pull
+- [X] o funcție șablon (template) cu sens; minim 2 instanțieri -> done: filter de card-uri din deck pentru MinionCard si SpellCard
+- [X] o clasă șablon cu sens; minim 2 instanțieri -> done: ObjectPull for MinionCard and SpellCard
 <!-- - [ ] o specializare pe funcție/clasă șablon -->
-- [ ] tag de `git`: de exemplu `v0.3` sau `v1.0`
+- [X] tag de `git`: de exemplu `v0.3` sau `v1.0`
 
 ## Resurse
 
