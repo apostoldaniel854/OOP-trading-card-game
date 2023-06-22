@@ -7,7 +7,7 @@ std::vector <std::shared_ptr<T>> CardFactory::myFilter(const std::vector<std::sh
     for (auto&& elem : vec)
         if (check(elem)) {
             /// dynamic cast from Card to T
-            if (std::shared_ptr <T> castedElem = std::dynamic_pointer_cast<T>(elem))
+            if (auto castedElem = std::dynamic_pointer_cast<T>(elem))
                 out.push_back(castedElem);
         }
     return out;

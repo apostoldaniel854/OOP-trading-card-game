@@ -4,7 +4,7 @@
 Game::Game() : board() {
     Deck catalog = readCatalog();
     std::cout << "CHOOSE GAME TYPE:\n";
-    std::cout << "1 Player vs AI (Recommended)\n";
+    std::cout << "1. Player vs AI (Recommended)\n";
     std::cout << "2. Player vs Player\n";
     std::cout << "3. AI vs AI\n";
     int choice;
