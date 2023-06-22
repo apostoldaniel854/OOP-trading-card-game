@@ -7,8 +7,10 @@ std::vector <std::shared_ptr<T>> CardFactory::myFilter(const std::vector<std::sh
     for (auto&& elem : vec)
         if (check(elem)) {
             /// dynamic cast from Card to T
-            if (auto castedElem = std::dynamic_pointer_cast<T>(elem))
-                out.push_back(castedElem);
+            auto castedElem = std::dynamic_pointer_cast<T>(elem);
+            if (castedElem == nullptr)
+                throw InvalidCard("Invalid card type");
+            out.push_back(castedElem);
         }
     return out;
 }

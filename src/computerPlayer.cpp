@@ -15,6 +15,8 @@ void ComputerPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Play
         if (card->getName() != EMPTY_CARD_NAME) {
             if (card->getType() == SPELL_CARD) {
                 auto spellCard = std::dynamic_pointer_cast<SpellCard>(card);
+                if (spellCard == nullptr)
+                    throw InvalidCard("Invalid card type");
                 opponent->takeDamage(spellCard->getDamage());
             }
             else {

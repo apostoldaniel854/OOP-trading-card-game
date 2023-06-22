@@ -10,6 +10,7 @@
 #include "utils.h"
 #include <functional>
 #include "../headers/cardPool.h"
+#include "../headers/exceptions/invalidCard.h"
 
 
 class CardFactory {

@@ -18,8 +18,10 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
                 std::shared_ptr<Card> card = hand.playCard(cardName, getMana());
                 bool notDone = card->playCard(board, getFriendly());
                 if (notDone) {
-                    if (auto spellCard = std::dynamic_pointer_cast<SpellCard>(card))
-                        opponent->takeDamage(spellCard->getDamage());
+                    auto spellCard = std::dynamic_pointer_cast<SpellCard>(card);
+                    if (spellCard == nullptr)
+                        throw InvalidCard("Invalid card type");
+                    opponent->takeDamage(spellCard->getDamage());
                 }
             }
             catch (InvalidCard& e) {
