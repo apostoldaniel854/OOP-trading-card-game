@@ -1,6 +1,5 @@
 #include "../headers/computerPlayer.h"
 #include "../headers/exceptions/invalidMinion.h"
-#include "../headers/exceptions/invalidCard.h"
 
 #include <utility>
 #include <memory>
