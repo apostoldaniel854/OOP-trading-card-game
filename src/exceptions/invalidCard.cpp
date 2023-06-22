@@ -1,8 +1,4 @@
 #include "../../headers/exceptions/invalidCard.h"
 
 
-InvalidCard::InvalidCard(const std::string& _message) : message(_message) {}
-
-const char* InvalidCard::what() const noexcept {
-    return message.c_str();
-}
+InvalidCard::InvalidCard(const std::string& _message) : GameException(_message) {}

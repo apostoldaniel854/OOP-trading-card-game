@@ -1,6 +1,5 @@
 #include "../headers/cardFactory.h"
 #include <functional>
-#include "../headers/cardPool.h"
 
 template <typename T>
 std::vector <std::shared_ptr<T>> CardFactory::myFilter(const std::vector<std::shared_ptr <Card>>& vec, const std::function<bool(const std::shared_ptr <Card>&)>& check) {
@@ -8,8 +7,8 @@ std::vector <std::shared_ptr<T>> CardFactory::myFilter(const std::vector<std::sh
     for (auto&& elem : vec)
         if (check(elem)) {
             /// dynamic cast from Card to T
-            std::shared_ptr <T> castedElem = std::dynamic_pointer_cast<T>(elem);
-            out.push_back(castedElem);
+            if (std::shared_ptr <T> castedElem = std::dynamic_pointer_cast<T>(elem))
+                out.push_back(castedElem);
         }
     return out;
 }
@@ -27,7 +26,7 @@ std::shared_ptr<Card> CardFactory::createMinionCard(const std::vector<std::share
         return card->getType() == MINION_CARD;
     });
     static CardPool<MinionCard, 2 * MAX_MINION_CARDS> pool;
-    auto card = pool.getConn();
+    auto card = pool.getCard();
     card = minionCatalog[getRandomInteger(0, (int)minionCatalog.size() - 1)];
     return card;
 }
@@ -37,7 +36,7 @@ std::shared_ptr<Card> CardFactory::createSpellCard(const std::vector<std::shared
         return card->getType() == SPELL_CARD;
     });
     static CardPool<SpellCard, 2 * MAX_SPELL_CARDS> pool;
-    auto card = pool.getConn();
+    auto card = pool.getCard();
     card = spellCatalog[getRandomInteger(0, (int)spellCatalog.size() - 1)];
     return card;
 }

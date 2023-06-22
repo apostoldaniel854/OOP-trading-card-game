@@ -22,6 +22,7 @@ public:
 
     void attackMinion(int attackerId, int defenderId, bool friendly);
     void damageMinion(int minionId, int damage, bool friendly);
+    void setMinionHasAttacked(int minionId, bool friendly);
 
     Minion getMinionById(int id, bool friendly);
 };

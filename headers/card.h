@@ -7,7 +7,7 @@
 
 class Card {
 private:
-    bool opened = false;
+    bool active = false;
 protected:
     std::string name;
     int manaCost;
@@ -22,9 +22,9 @@ public:
     [[nodiscard]] virtual std::shared_ptr<Card> clone() const = 0;
     friend std::ostream& operator << (std::ostream& out, const Card& card);
     virtual ~Card();
-    void open() { opened = true; }
-    [[nodiscard]] bool free() const { return !opened; }
-    void close() { opened = false; }
+    void activate() { active = true; }
+    [[nodiscard]] bool isInactive() const { return !active; }
+    void deactivate() { active = false; }
 };
 
 

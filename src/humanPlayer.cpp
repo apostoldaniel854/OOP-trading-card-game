@@ -1,20 +1,9 @@
 #include "../headers/humanPlayer.h"
-#include "../headers/exceptions/invalidCard.h"
-#include "../headers/exceptions/invalidMinion.h"
+
 
 HumanPlayer::HumanPlayer(std::string  name, bool friendly, int health, const Deck& deck) : Player(std::move(name), friendly, health, deck) {}
 
-bool HumanPlayer::isNumber(const std::string& str) {
-    if (isdigit(str[0]) && str[0] != '0') {
-        if ((int)str.size() > 6)
-            return false;
-        for (int i = 1; i < (int)str.size(); i++)
-            if (!isdigit(str[i]))
-                return false;
-        return true;
-    }
-    return false;
-}
+
 
 void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>& opponent) {
     startTurn(turn, board);
@@ -29,8 +18,8 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
                 std::shared_ptr<Card> card = hand.playCard(cardName, getMana());
                 bool notDone = card->playCard(board, getFriendly());
                 if (notDone) {
-                    auto spellCard = std::dynamic_pointer_cast<SpellCard>(card);
-                    opponent->takeDamage(spellCard->getDamage());
+                    if (auto spellCard = std::dynamic_pointer_cast<SpellCard>(card))
+                        opponent->takeDamage(spellCard->getDamage());
                 }
             }
             catch (InvalidCard& e) {
@@ -69,6 +58,7 @@ void HumanPlayer::playTurn(int turn, Board& board, const std::shared_ptr<Player>
                 } else {
                     int damage = minion.getAttack();
                     opponent->takeDamage(damage);
+                    board.setMinionHasAttacked(attackerId, getFriendly());
                     if (isGameOver(opponent))
                         return;
                 }

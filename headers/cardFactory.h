@@ -9,6 +9,7 @@
 #include "spellCard.h"
 #include "utils.h"
 #include <functional>
+#include "../headers/cardPool.h"
 
 
 class CardFactory {

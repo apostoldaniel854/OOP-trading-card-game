@@ -1,10 +1,8 @@
 #pragma once
-
 #include <string>
-class InvalidMinion : public std::exception {
-private:
-    std::string message;
+#include "gameException.h"
+
+class InvalidMinion : public GameException {
 public:
     explicit InvalidMinion(int minionId);
-    [[nodiscard]] const char* what() const noexcept override;
 };

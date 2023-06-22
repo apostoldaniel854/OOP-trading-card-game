@@ -4,8 +4,8 @@
 Game::Game() : board() {
     Deck catalog = readCatalog();
     std::cout << "CHOOSE GAME TYPE:\n";
-    std::cout << "1. Player vs Player\n";
-    std::cout << "2. Player vs AI\n";
+    std::cout << "1 Player vs AI (Recommended)\n";
+    std::cout << "2. Player vs Player\n";
     std::cout << "3. AI vs AI\n";
     int choice;
     std::cin >> choice;
@@ -21,11 +21,11 @@ Game::Game() : board() {
     std::cin >> name2;
     if (choice == 1) {
         player1 = std::make_shared<HumanPlayer>(name1, IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE, catalog));
-        player2 = std::make_shared<HumanPlayer>(name2, IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE, catalog));
+        player2 = std::make_shared<ComputerPlayer>(name2, IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE, catalog));
     }
     else if (choice == 2) {
         player1 = std::make_shared<HumanPlayer>(name1, IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE, catalog));
-        player2 = std::make_shared<ComputerPlayer>(name2, IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE, catalog));
+        player2 = std::make_shared<HumanPlayer>(name2, IS_NOT_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE, catalog));
     }
     else {
         player1 = std::make_shared<ComputerPlayer>(name1, IS_FRIENDLY, MAX_HEALTH, Deck(MAX_DECK_SIZE, catalog));

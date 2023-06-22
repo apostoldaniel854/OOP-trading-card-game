@@ -9,7 +9,7 @@ Deck::Deck(int numCards, const Deck& catalog) {
         /// random shuffle cards
         std::shuffle(cards.begin(), cards.end(), std::mt19937(std::random_device()()));
     }
-    catch (const std::exception &e) {
+    catch (const InvalidDeck &e) {
         std::cerr << e.what() << std::endl;
     }
 }

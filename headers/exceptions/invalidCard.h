@@ -1,11 +1,9 @@
 #pragma once
+#include "gameException.h"
 
 #include <string>
 
-class InvalidCard : public std::exception {
-private:
-    std::string message;
+class InvalidCard : public GameException {
 public:
     explicit InvalidCard(const std::string& message);
-    [[nodiscard]] const char* what() const noexcept override;
 };

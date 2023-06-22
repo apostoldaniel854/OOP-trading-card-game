@@ -29,4 +29,5 @@ static const int MAX_SPELL_CARDS = 10;
 
 int getRandomInteger(int leftBound, int rightBound);
 void delay(double seconds);
+bool isNumber(const std::string& str);
 

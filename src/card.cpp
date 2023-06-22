@@ -22,4 +22,4 @@ std::ostream& operator << (std::ostream& out, const Card& card) {
     return out;
 }
 
-Card::~Card() { close(); }
+Card::~Card() { deactivate(); }

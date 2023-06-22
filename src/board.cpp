@@ -103,3 +103,15 @@ void Board::damageMinion(int minionId, int damage, bool friendly) {
             enemyMinions.erase(enemyMinions.begin() + minionId);
     }
 }
+
+void Board::setMinionHasAttacked(int minionId, bool friendly) {
+    if (friendly) {
+        if (minionId < 0 || minionId >= (int) friendlyMinions.size())
+            throw InvalidMinion(minionId);
+        friendlyMinions[minionId].setAlreadyAttacked(true);
+    } else {
+        if (minionId < 0 || minionId >= (int) enemyMinions.size())
+            throw InvalidMinion(minionId);
+        enemyMinions[minionId].setAlreadyAttacked(true);
+    }
+}

@@ -1,14 +1,21 @@
 #include "../headers/cardPool.h"
 
 template<typename T, int maxVal>
-std::shared_ptr<T> &CardPool<T, maxVal>::getConn() {
-    for(auto& conn : conns)
-        if(conn->free()) {
-            conn->open();
-            return conn;
+std::shared_ptr<T> &CardPool<T, maxVal>::getCard() {
+    for(auto& card : cards)
+        if(card->isInactive()) {
+            card->activate();
+            return card;
         }
-    throw std::runtime_error("Too many cards!");
+    throw InvalidDeck();
 }
+
+template<typename T, int maxVal>
+CardPool<T, maxVal>::CardPool() {
+    for (auto& card : cards)
+        card = std::make_shared<T>();
+}
+
 
 template
 class CardPool<MinionCard, 2 * MAX_MINION_CARDS>;

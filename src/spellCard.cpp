@@ -14,12 +14,26 @@ bool SpellCard::playCard(Board &board, bool friendly) {
     std::cout << "Who do you want to target with this spell?" << std::endl;
     std::cout << "0 - Opponent\n" << std::endl;
     std::cout << "i - the ith enemy minion from left\n" << std::endl;
-    int answer;
+    std::string answer;
     std::cin >> answer;
-    if (answer == OPPONENT_TARGET) {
+    while (not isNumber(answer)) {
+        std::cout << "Please enter a valid number" << std::endl;
+        std::cin >> answer;
+    }
+    int idx = stoi(answer);
+    while (idx < OPPONENT_TARGET || (friendly && idx > (int)board.getEnemyMinions().size()) || (!friendly && idx > (int)board.getFriendlyMinions().size())) {
+        std::cout << "Invalid target chosen. Try again." << std::endl;
+        std::cin >> answer;
+        while (not isNumber(answer)) {
+            std::cout << "Please enter a valid number" << std::endl;
+            std::cin >> answer;
+        }
+        idx = stoi(answer);
+    }
+    if (idx == OPPONENT_TARGET) {
         return true;
     }
-    answer--;
-    board.damageMinion(answer, damage, !friendly);
+    idx--;
+    board.damageMinion(idx, damage, !friendly);
     return false;
 }
